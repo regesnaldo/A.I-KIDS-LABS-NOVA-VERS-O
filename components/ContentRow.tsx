@@ -10,9 +10,9 @@ interface ContentRowProps {
 
 const ContentRow: React.FC<ContentRowProps> = ({ title, items, onSelect }) => {
   return (
-    <div className="py-6 px-6 sm:px-12">
-      <h2 className="text-xl font-orbitron font-bold mb-4 text-white uppercase tracking-wider">{title}</h2>
-      <div className="flex space-x-4 overflow-x-auto pb-6 scrollbar-hide">
+    <div className="py-6">
+      <h2 className="px-6 sm:px-12 text-xl font-orbitron font-bold mb-4 text-white uppercase tracking-wider">{title}</h2>
+      <div className="px-6 sm:px-12 flex space-x-4 overflow-x-auto pb-6 scrollbar-hide">
         {items.map((item) => (
           <div 
             key={item.id}
