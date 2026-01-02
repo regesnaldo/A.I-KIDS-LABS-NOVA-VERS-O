@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -42,7 +43,13 @@ const AIStudioPortal = () => {
 
       {/* Filtros */}
       <div style={{ padding: '0 40px 20px' }}>
-        <div style={{ display: 'flex', gap: '10px' }}>
+              </div>
+                  <div style={{ padding: '12px' }}>
+                    <div style={{ fontSize: '13px', fontWeight: 'bold' }}>{mod.nome}</div>
+                    <div style={{ fontSize: '11px', color: '#5f6368', marginTop: '4px' }}>Prompt: {mod.prompt.substring(0, 30)}...</div>
+                  </div>
+                </div>
+              ))}        <div style={{ display: 'flex', gap: '10px' }}>
           {['TODOS', '7+', '12+', 'ADULTO'].map(f => (
             <button key={f} onClick={() => setFiltro(f)} style={{
               backgroundColor: filtro === f ? '#00ffff' : '#1e1f20',
@@ -53,24 +60,43 @@ const AIStudioPortal = () => {
         </div>
       </div>
 
-      {/* Listagem das 50 Temporadas */}
-      <div style={{ padding: '0 40px 50px' }}>
-        {temporadasData.map(temp => (
-          <div key={temp.id} style={{ marginBottom: '40px' }}>
-            <h3 style={{ fontSize: '16px', color: '#9aa0a6', marginBottom: '15px' }}>{temp.titulo}</h3>
-            <div style={{ display: 'flex', overflowX: 'auto', gap: '20px', scrollbarWidth: 'none' }}>
-              {temp.modulos.map(mod => (
-                <div key={mod.id} style={{ minWidth: '260px', backgroundColor: '#1e1f20', borderRadius: '8px', overflow: 'hidden', border: '1px solid #333' }}>
-                  {/* Espaço para a Imagem */}
-                  <div style={{ height: '140px', backgroundColor: '#131314', backgroundImage: `url(/${mod.img})`, backgroundSize: 'cover', display: 'flex', alignItems: 'flex-end', padding: '10px' }}>
-                    <span style={{ fontSize: '10px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '2px 6px', borderRadius: '4px' }}>{mod.tipo}</span>
-                  </div>
-                  <div style={{ padding: '12px' }}>
-                    <div style={{ fontSize: '13px', fontWeight: 'bold' }}>{mod.nome}</div>
-                    <div style={{ fontSize: '11px', color: '#5f6368', marginTop: '4px' }}>Prompt: {mod.prompt.substring(0, 30)}...</div>
-                  </div>
-                </div>
-              ))}
+      {temp.modulos.map(mod => (
+        <div key={mod.id} className="module-card" style={{ 
+          minWidth: '260px', 
+          backgroundColor: '#1e1f20', 
+          borderRadius: '8px', 
+          overflow: 'hidden', 
+          border: '1px solid #333' 
+        }}>
+          {/* Espaço para a Imagem */}
+          <div style={{ height: '140px', backgroundColor: '#131314', backgroundImage: `url(/${mod.img})`, backgroundSize: 'cover', display: 'flex', alignItems: 'flex-end', padding: '10px' }}>
+            <span style={{ fontSize: '10px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '2px 6px', borderRadius: '4px' }}>{mod.tipo}</span>
+          </div>
+          
+          <div style={{ padding: '12px' }}>
+            <div style={{ fontSize: '13px', fontWeight: 'bold' }}>{mod.nome}</div>
+            <div style={{ fontSize: '11px', color: '#5f6368', marginTop: '4px' }}>Prompt: {mod.prompt.substring(0, 30)}...</div>
+          </div>
+        </div>
+      ))}{temp.modulos.map(mod => (
+  <div key={mod.id} className="module-card" style={{ 
+    minWidth: '260px', 
+    backgroundColor: '#1e1f20', 
+    borderRadius: '8px', 
+    overflow: 'hidden', 
+    border: '1px solid #333' 
+  }}>
+    {/* Espaço para a Imagem */}
+    <div style={{ height: '140px', backgroundColor: '#131314', backgroundImage: `url(/${mod.img})`, backgroundSize: 'cover', display: 'flex', alignItems: 'flex-end', padding: '10px' }}>
+      <span style={{ fontSize: '10px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '2px 6px', borderRadius: '4px' }}>{mod.tipo}</span>
+    </div>
+    
+    <div style={{ padding: '12px' }}>
+      <div style={{ fontSize: '13px', fontWeight: 'bold' }}>{mod.nome}</div>
+      <div style={{ fontSize: '11px', color: '#5f6368', marginTop: '4px' }}>Prompt: {mod.prompt.substring(0, 30)}...</div>
+    </div>
+  </div>
+))}
             </div>
           </div>
         ))}
