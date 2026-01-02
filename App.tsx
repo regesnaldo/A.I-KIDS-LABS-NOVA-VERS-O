@@ -66,11 +66,11 @@ const App: React.FC = () => {
 
         {/* Mission Row */}
         <MissionRow
-          title="Missões Especiais"
+          title="Space Missions"
           missions={[
-            { id: 101, title: 'Missão Marte', thumbnail: 'https://picsum.photos/seed/mars/600/400' },
-            { id: 102, title: 'Código Secreto', thumbnail: 'https://picsum.photos/seed/code/600/400' },
-            { id: 103, title: 'Robô Amigo', thumbnail: 'https://picsum.photos/seed/robot/600/400' }
+            { id: 101, title: 'Mars Exploration', thumbnail: 'https://picsum.photos/seed/mars/600/400' },
+            { id: 102, title: 'Secret Code', thumbnail: 'https://picsum.photos/seed/code/600/400' },
+            { id: 103, title: 'Robot Friend', thumbnail: 'https://picsum.photos/seed/robot/600/400' }
           ]}
         />
 
