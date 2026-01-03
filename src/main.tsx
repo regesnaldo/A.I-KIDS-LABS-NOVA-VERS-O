@@ -132,9 +132,7 @@ const AIStudioPortal = () => {
           right: 0,
           bottom: 0,
           backgroundColor: '#0a0a0a',
-          backgroundImage: 'url(https://placehold.co/1920x1080/1a1a2e/00ffff.png?text=Neon+Background)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(255, 0, 255, 0.15) 50%, rgba(0, 0, 0, 0.95) 100%)',
           zIndex: 1000,
           display: 'flex',
           flexDirection: 'column',
@@ -142,15 +140,26 @@ const AIStudioPortal = () => {
           alignItems: 'center',
           gap: '40px'
         }}>
-          {/* Overlay Neon */}
+          {/* Efeito de Brilho Neon Sutil no Fundo */}
           <div style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%)',
-            backdropFilter: 'blur(2px)'
+            top: '20%',
+            left: '20%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(60px)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            bottom: '20%',
+            right: '20%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(60px)'
           }}></div>
 
           {/* Conteúdo Centralizado */}
