@@ -117,6 +117,7 @@ const AIStudioPortal = () => {
   const [episodiosAssistidos, setEpisodiosAssistidos] = useState<Set<string>>(new Set());
   const [mostrarPlanos, setMostrarPlanos] = useState(false);
   const [mostrarConvidar, setMostrarConvidar] = useState(false);
+  const [mostrarLaboratorio, setMostrarLaboratorio] = useState(false);
   const [codigoIndicacao] = useState(`AIKIDS${Math.random().toString(36).substring(2, 8).toUpperCase()}`);
   const [creditosPremium] = useState(150.00);
   const [amigosConvidados] = useState(2);
@@ -879,6 +880,375 @@ const AIStudioPortal = () => {
             </div>
           )}
 
+          {/* Sala de Estudo - Laboratório (Acesso Direto) */}
+          {mostrarLaboratorio && !episodioSelecionado && (
+            <div style={{ 
+              padding: '20px', 
+              minHeight: '100vh', 
+              display: 'flex', 
+              flexDirection: 'column',
+              paddingBottom: '200px'
+            }}>
+              <button
+                onClick={() => setMostrarLaboratorio(false)}
+                style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: cores.primaria,
+                  backgroundColor: 'transparent',
+                  border: `2px solid ${cores.primaria}`,
+                  padding: '12px 24px',
+                  borderRadius: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  cursor: 'pointer',
+                  marginBottom: '20px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: `0 0 10px ${cores.primariaRgba}0.3)`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = `${cores.primariaRgba}0.1)`;
+                  e.currentTarget.style.boxShadow = `0 0 20px ${cores.primariaRgba}0.5)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.boxShadow = `0 0 10px ${cores.primariaRgba}0.3)`;
+                }}
+              >
+                ← VOLTAR
+              </button>
+
+              <h2 style={{
+                fontFamily: 'Orbitron, sans-serif',
+                fontWeight: 900,
+                fontSize: '36px',
+                color: '#FFFFFF',
+                letterSpacing: '-0.02em',
+                textShadow: `0 0 20px ${cores.primariaRgba}0.5)`,
+                marginBottom: '30px'
+              }}>
+                LABORATÓRIO DE ESTUDO
+              </h2>
+
+              {/* Layout Principal: Vídeo + Painel Lateral */}
+              <div style={{ 
+                display: 'flex', 
+                gap: '20px', 
+                flex: 1,
+                minHeight: 0
+              }}>
+                {/* Área do Vídeo */}
+                <div style={{ 
+                  flex: '1 1 70%',
+                  minWidth: 0,
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}>
+                  <div style={{
+                    width: '100%',
+                    aspectRatio: '16/9',
+                    backgroundColor: '#0a0a0a',
+                    border: `2px solid ${cores.primaria}`,
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    boxShadow: `0 0 30px ${cores.primariaRgba}0.4), inset 0 0 50px ${cores.primariaRgba}0.1)`,
+                    marginBottom: '20px'
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      textAlign: 'center',
+                      color: cores.primaria,
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 700,
+                      textShadow: `0 0 20px ${cores.primariaRgba}0.8)`,
+                      letterSpacing: '0.1em'
+                    }}>
+                      🎥 SELECIONE UMA AULA
+                    </div>
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: `linear-gradient(135deg, ${cores.primariaRgba}0.05) 0%, rgba(0, 0, 0, 0.95) 100%)`
+                    }}></div>
+                  </div>
+                </div>
+
+                {/* Painel Lateral - Tutores IA */}
+                <div style={{ 
+                  flex: '0 0 350px',
+                  minWidth: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '15px'
+                }}>
+                  {/* ChatGPT Tutor */}
+                  <div style={{
+                    backgroundColor: '#1e1f20',
+                    border: `2px solid ${cores.primaria}`,
+                    borderRadius: '12px',
+                    padding: '20px',
+                    boxShadow: `0 0 20px ${cores.primariaRgba}0.3)`,
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 700,
+                      color: cores.primaria,
+                      marginBottom: '15px',
+                      textShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                      letterSpacing: '0.05em'
+                    }}>
+                      🤖 TUTOR CHATGPT
+                    </div>
+                    <div style={{
+                      flex: 1,
+                      backgroundColor: '#0a0a0a',
+                      borderRadius: '8px',
+                      padding: '15px',
+                      border: `1px solid ${cores.primariaRgba}0.2)`,
+                      overflowY: 'auto',
+                      maxHeight: '300px',
+                      color: '#E3E3E3',
+                      fontSize: '14px',
+                      lineHeight: '1.6',
+                      fontFamily: 'Inter, sans-serif'
+                    }}>
+                      {modo === 'kids' ? (
+                        <div>
+                          <p>👋 Olá! Eu sou seu tutor amigável!</p>
+                          <p>✨ Posso te ajudar a entender tudo sobre este módulo de forma super divertida!</p>
+                          <p>💡 Faça perguntas e vamos aprender juntos!</p>
+                        </div>
+                      ) : (
+                        <div>
+                          <p>Bem-vindo ao Tutor ChatGPT.</p>
+                          <p>Estou aqui para auxiliá-lo com explicações técnicas, conceitos avançados e resolução de problemas relacionados a este módulo.</p>
+                          <p>Como posso ajudá-lo hoje?</p>
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      placeholder={modo === 'kids' ? '💬 Digite sua pergunta aqui...' : 'Digite sua pergunta...'}
+                      style={{
+                        marginTop: '15px',
+                        padding: '12px',
+                        backgroundColor: '#0a0a0a',
+                        border: `1px solid ${cores.primariaRgba}0.3)`,
+                        borderRadius: '8px',
+                        color: '#FFFFFF',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '14px',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = cores.primaria;
+                        e.currentTarget.style.boxShadow = `0 0 10px ${cores.primariaRgba}0.3)`;
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = `${cores.primariaRgba}0.3)`;
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    />
+                  </div>
+
+                  {/* Gemini Tutor */}
+                  <div style={{
+                    backgroundColor: '#1e1f20',
+                    border: `2px solid ${cores.primaria}`,
+                    borderRadius: '12px',
+                    padding: '20px',
+                    boxShadow: `0 0 20px ${cores.primariaRgba}0.3)`,
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 700,
+                      color: cores.primaria,
+                      marginBottom: '15px',
+                      textShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                      letterSpacing: '0.05em'
+                    }}>
+                      ⚡ TUTOR GEMINI
+                    </div>
+                    <div style={{
+                      flex: 1,
+                      backgroundColor: '#0a0a0a',
+                      borderRadius: '8px',
+                      padding: '15px',
+                      border: `1px solid ${cores.primariaRgba}0.2)`,
+                      overflowY: 'auto',
+                      maxHeight: '300px',
+                      color: '#E3E3E3',
+                      fontSize: '14px',
+                      lineHeight: '1.6',
+                      fontFamily: 'Inter, sans-serif'
+                    }}>
+                      {modo === 'kids' ? (
+                        <div>
+                          <p>🌟 E aí! Sou o Gemini, seu assistente super rápido!</p>
+                          <p>🚀 Posso te ajudar a criar coisas incríveis e responder suas dúvidas na velocidade da luz!</p>
+                          <p>🎨 Vamos criar algo legal juntos?</p>
+                        </div>
+                      ) : (
+                        <div>
+                          <p>Bem-vindo ao Tutor Gemini.</p>
+                          <p>Especializado em análise rápida, geração de código e soluções práticas para seus projetos.</p>
+                          <p>Em que posso auxiliá-lo?</p>
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      placeholder={modo === 'kids' ? '💬 Digite sua pergunta aqui...' : 'Digite sua pergunta...'}
+                      style={{
+                        marginTop: '15px',
+                        padding: '12px',
+                        backgroundColor: '#0a0a0a',
+                        border: `1px solid ${cores.primariaRgba}0.3)`,
+                        borderRadius: '8px',
+                        color: '#FFFFFF',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '14px',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = cores.primaria;
+                        e.currentTarget.style.boxShadow = `0 0 10px ${cores.primariaRgba}0.3)`;
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = `${cores.primariaRgba}0.3)`;
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Aba Fixa na Base - Área de Criação de Prompts */}
+              <div style={{
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: '#131314',
+                borderTop: `2px solid ${cores.primaria}`,
+                padding: '20px 40px',
+                boxShadow: `0 -5px 30px ${cores.primariaRgba}0.3)`,
+                zIndex: 1000,
+                backdropFilter: 'blur(12px)'
+              }}>
+                <div style={{
+                  maxWidth: '1400px',
+                  margin: '0 auto'
+                }}>
+                  <div style={{
+                    fontFamily: 'Orbitron, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: cores.primaria,
+                    marginBottom: '15px',
+                    textShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                    letterSpacing: '0.05em'
+                  }}>
+                    {modo === 'kids' ? '✨ ÁREA DE CRIAÇÃO DE PROMPTS MÁGICOS ✨' : 'ÁREA DE CRIAÇÃO DE PROMPTS'}
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    gap: '15px',
+                    alignItems: 'flex-end'
+                  }}>
+                    <div style={{ flex: 1 }}>
+                      <textarea
+                        placeholder={modo === 'kids' 
+                          ? '🎨 Descreva o que você quer criar! Use sua imaginação e seja criativo! Exemplo: "Crie um robô que dança" ou "Faça um jogo sobre espaço"' 
+                          : 'Digite seu prompt aqui. Seja específico sobre o que deseja criar, incluindo contexto técnico, formato de saída e requisitos.'}
+                        style={{
+                          width: '100%',
+                          minHeight: '80px',
+                          padding: '15px',
+                          backgroundColor: '#0a0a0a',
+                          border: `2px solid ${cores.primariaRgba}0.3)`,
+                          borderRadius: '12px',
+                          color: '#FFFFFF',
+                          fontFamily: modo === 'kids' ? 'Inter, sans-serif' : 'Inter, sans-serif',
+                          fontSize: '14px',
+                          lineHeight: '1.6',
+                          outline: 'none',
+                          resize: 'vertical',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onFocus={(e) => {
+                          e.currentTarget.style.borderColor = cores.primaria;
+                          e.currentTarget.style.boxShadow = `0 0 15px ${cores.primariaRgba}0.4)`;
+                        }}
+                        onBlur={(e) => {
+                          e.currentTarget.style.borderColor = `${cores.primariaRgba}0.3)`;
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      />
+                    </div>
+                    <button
+                      style={{
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontWeight: 700,
+                        fontSize: '14px',
+                        color: '#000000',
+                        backgroundColor: cores.primaria,
+                        border: 'none',
+                        padding: '15px 30px',
+                        borderRadius: '12px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        boxShadow: `0 0 20px ${cores.primariaRgba}0.5)`,
+                        whiteSpace: 'nowrap'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = `0 0 30px ${cores.primariaRgba}0.7)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = `0 0 20px ${cores.primariaRgba}0.5)`;
+                      }}
+                    >
+                      {modo === 'kids' ? '🚀 CRIAR!' : 'GERAR PROMPT'}
+                    </button>
+                  </div>
+                  {modo === 'kids' && (
+                    <div style={{
+                      marginTop: '10px',
+                      fontSize: '12px',
+                      color: '#9AA0A6',
+                      fontFamily: 'Inter, sans-serif'
+                    }}>
+                      💡 Dica: Quanto mais detalhes você der, mais incrível será o resultado!
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Sala de Estudo - Página do Episódio */}
           {episodioSelecionado && (
             <div style={{ 
@@ -1386,7 +1756,7 @@ const AIStudioPortal = () => {
           )}
 
           {/* Página Principal (Grid de Temporadas) */}
-          {!temporadaSelecionada && !episodioSelecionado && !mostrarPlanos && !mostrarConvidar && (
+          {!temporadaSelecionada && !episodioSelecionado && !mostrarPlanos && !mostrarConvidar && !mostrarLaboratorio && (
             <div>
       {/* Menu Superior Estilo Studio */}
       <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '15px 40px', borderBottom: `1px solid ${cores.primariaRgba}0.2)`, backgroundColor: 'rgba(19, 19, 20, 0.9)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 100 }}>
@@ -1425,9 +1795,17 @@ const AIStudioPortal = () => {
           </span>
           <span 
             className="nav-link" 
+            onClick={() => { 
+              setMostrarLaboratorio(true); 
+              setTemporadaSelecionada(null); 
+              setEpisodioSelecionado(null); 
+              setMostrarPlanos(false); 
+              setMostrarConvidar(false); 
+            }}
             style={{ 
               color: '#9AA0A6', 
               textTransform: 'uppercase',
+              cursor: 'pointer',
               '--neon-color': cores.primaria,
               '--neon-rgba': cores.primariaRgba
             } as React.CSSProperties & { '--neon-color': string; '--neon-rgba': string }}
@@ -1460,6 +1838,48 @@ const AIStudioPortal = () => {
             }}
           >
             FAMÍLIA
+          </span>
+          <span 
+            className="nav-link" 
+            onClick={() => { setMostrarPlanos(true); setTemporadaSelecionada(null); setEpisodioSelecionado(null); setMostrarConvidar(false); setMostrarLaboratorio(false); }}
+            style={{ 
+              color: '#9AA0A6', 
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              '--neon-color': cores.primaria,
+              '--neon-rgba': cores.primariaRgba
+            } as React.CSSProperties & { '--neon-color': string; '--neon-rgba': string }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = cores.primaria;
+              e.currentTarget.style.textShadow = `0 0 10px ${cores.primariaRgba}0.6)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#9AA0A6';
+              e.currentTarget.style.textShadow = 'none';
+            }}
+          >
+            PLANOS
+          </span>
+          <span 
+            className="nav-link" 
+            onClick={() => { setMostrarConvidar(true); setTemporadaSelecionada(null); setEpisodioSelecionado(null); setMostrarPlanos(false); setMostrarLaboratorio(false); }}
+            style={{ 
+              color: '#9AA0A6', 
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              '--neon-color': cores.primaria,
+              '--neon-rgba': cores.primariaRgba
+            } as React.CSSProperties & { '--neon-color': string; '--neon-rgba': string }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = cores.primaria;
+              e.currentTarget.style.textShadow = `0 0 10px ${cores.primariaRgba}0.6)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#9AA0A6';
+              e.currentTarget.style.textShadow = 'none';
+            }}
+          >
+            {modo === 'kids' ? 'CHAMAR PARCEIRO' : 'INDICAR EXPLORADOR'}
           </span>
           <span 
             className="nav-link" 
