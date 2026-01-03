@@ -115,6 +115,11 @@ const AIStudioPortal = () => {
   const [temporadaSelecionada, setTemporadaSelecionada] = useState<number | null>(null);
   const [episodioSelecionado, setEpisodioSelecionado] = useState<{ temporadaId: number; episodioId: number } | null>(null);
   const [episodiosAssistidos, setEpisodiosAssistidos] = useState<Set<string>>(new Set());
+  const [mostrarPlanos, setMostrarPlanos] = useState(false);
+  const [mostrarConvidar, setMostrarConvidar] = useState(false);
+  const [codigoIndicacao] = useState(`AIKIDS${Math.random().toString(36).substring(2, 8).toUpperCase()}`);
+  const [creditosPremium] = useState(150.00);
+  const [amigosConvidados] = useState(2);
 
   // Função para marcar episódio como assistido
   const marcarEpisodioAssistido = (temporadaId: number, episodioId: number) => {
@@ -181,6 +186,12 @@ const AIStudioPortal = () => {
     } else if (temporadaSelecionada) {
       setTemporadaSelecionada(null);
     }
+  };
+
+  // Função para copiar código de indicação
+  const copiarCodigo = () => {
+    navigator.clipboard.writeText(codigoIndicacao);
+    alert(modo === 'kids' ? '✨ Código copiado! Agora você pode compartilhar!' : 'Código copiado para a área de transferência!');
   };
 
   return (
@@ -330,6 +341,544 @@ const AIStudioPortal = () => {
       {/* Conteúdo Principal (apenas quando modo estiver selecionado) */}
       {modo !== null && (
         <div>
+          {/* Página de Planos */}
+          {mostrarPlanos && !temporadaSelecionada && !episodioSelecionado && (
+            <div style={{ padding: '60px 40px', minHeight: '100vh' }}>
+              <button
+                onClick={() => setMostrarPlanos(false)}
+                style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: cores.primaria,
+                  backgroundColor: 'transparent',
+                  border: `2px solid ${cores.primaria}`,
+                  padding: '12px 24px',
+                  borderRadius: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: `0 0 10px ${cores.primariaRgba}0.3)`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = `${cores.primariaRgba}0.1)`;
+                  e.currentTarget.style.boxShadow = `0 0 20px ${cores.primariaRgba}0.5)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.boxShadow = `0 0 10px ${cores.primariaRgba}0.3)`;
+                }}
+              >
+                ← VOLTAR
+              </button>
+
+              <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+                <h1 style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontWeight: 900,
+                  fontSize: '48px',
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.02em',
+                  textShadow: `0 0 30px ${cores.primariaRgba}0.6), 0 0 60px ${cores.primariaRgba}0.3)`,
+                  marginBottom: '20px'
+                }}>
+                  UM ÚNICO PLANO, EVOLUÇÃO PARA A FAMÍLIA TODA.
+                </h1>
+                <p style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontSize: '18px',
+                  color: '#9AA0A6',
+                  marginBottom: '60px',
+                  letterSpacing: '0.05em'
+                }}>
+                  Assine uma vez e libere o acesso total para Kids e Adultos
+                </p>
+
+                {/* Cards de Planos */}
+                <div style={{
+                  display: 'flex',
+                  gap: '40px',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  marginBottom: '40px'
+                }}>
+                  {/* Plano Mensal */}
+                  <div style={{
+                    flex: '1 1 400px',
+                    maxWidth: '450px',
+                    backgroundColor: '#1e1f20',
+                    border: `2px solid ${cores.primariaRgba}0.3)`,
+                    borderRadius: '20px',
+                    padding: '40px',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = cores.primaria;
+                    e.currentTarget.style.boxShadow = `0 0 30px ${cores.primariaRgba}0.4)`;
+                    e.currentTarget.style.transform = 'translateY(-10px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = `${cores.primariaRgba}0.3)`;
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                  >
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 700,
+                      color: cores.primaria,
+                      marginBottom: '20px',
+                      textShadow: `0 0 15px ${cores.primariaRgba}0.5)`,
+                      letterSpacing: '0.05em'
+                    }}>
+                      PLANO MENSAL
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '48px',
+                      fontWeight: 900,
+                      color: '#FFFFFF',
+                      marginBottom: '10px',
+                      textShadow: `0 0 20px ${cores.primariaRgba}0.5)`
+                    }}>
+                      R$ 97,00
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '14px',
+                      color: '#9AA0A6',
+                      marginBottom: '30px',
+                      letterSpacing: '0.1em'
+                    }}>
+                      FLEXIBILIDADE
+                    </div>
+                    <ul style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      marginBottom: '30px',
+                      textAlign: 'left'
+                    }}>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Acesso completo Kids e Adultos</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ 50 Temporadas disponíveis</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Tutores IA integrados</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Cancele quando quiser</li>
+                    </ul>
+                    <button
+                      style={{
+                        width: '100%',
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontWeight: 700,
+                        fontSize: '16px',
+                        color: '#000000',
+                        backgroundColor: cores.primaria,
+                        border: 'none',
+                        padding: '16px 32px',
+                        borderRadius: '24px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        boxShadow: `0 0 25px ${cores.primariaRgba}0.5)`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '10px'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = `0 0 35px ${cores.primariaRgba}0.7)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = `0 0 25px ${cores.primariaRgba}0.5)`;
+                      }}
+                    >
+                      <span>💳</span> PAGAR COM PIX
+                    </button>
+                  </div>
+
+                  {/* Plano Anual */}
+                  <div style={{
+                    flex: '1 1 400px',
+                    maxWidth: '450px',
+                    backgroundColor: '#1e1f20',
+                    border: `3px solid ${cores.primaria}`,
+                    borderRadius: '20px',
+                    padding: '40px',
+                    position: 'relative',
+                    transition: 'all 0.3s ease',
+                    boxShadow: `0 0 40px ${cores.primariaRgba}0.4)`
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = `0 0 50px ${cores.primariaRgba}0.6)`;
+                    e.currentTarget.style.transform = 'translateY(-10px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = `0 0 40px ${cores.primariaRgba}0.4)`;
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                  >
+                    <div style={{
+                      position: 'absolute',
+                      top: '-15px',
+                      right: '30px',
+                      backgroundColor: '#FFD700',
+                      color: '#000000',
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      letterSpacing: '0.1em',
+                      boxShadow: `0 0 20px rgba(255, 215, 0, 0.6)`,
+                      textTransform: 'uppercase'
+                    }}>
+                      MELHOR VALOR
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 700,
+                      color: cores.primaria,
+                      marginBottom: '20px',
+                      textShadow: `0 0 15px ${cores.primariaRgba}0.5)`,
+                      letterSpacing: '0.05em'
+                    }}>
+                      PLANO ANUAL
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '48px',
+                      fontWeight: 900,
+                      color: '#FFFFFF',
+                      marginBottom: '5px',
+                      textShadow: `0 0 20px ${cores.primariaRgba}0.5)`
+                    }}>
+                      R$ 970,00
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '18px',
+                      color: '#FFD700',
+                      marginBottom: '10px',
+                      textShadow: `0 0 15px rgba(255, 215, 0, 0.6)`,
+                      fontWeight: 700
+                    }}>
+                      Economia de R$ 194,00
+                    </div>
+                    <div style={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '14px',
+                      color: '#9AA0A6',
+                      marginBottom: '30px',
+                      letterSpacing: '0.1em'
+                    }}>
+                      DESCONTO DE FIDELIZAÇÃO
+                    </div>
+                    <ul style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      marginBottom: '30px',
+                      textAlign: 'left'
+                    }}>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Acesso completo Kids e Adultos</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ 50 Temporadas disponíveis</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Tutores IA integrados</li>
+                      <li style={{ color: '#E3E3E3', marginBottom: '15px', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>✓ Suporte prioritário</li>
+                    </ul>
+                    <button
+                      style={{
+                        width: '100%',
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontWeight: 700,
+                        fontSize: '16px',
+                        color: '#000000',
+                        backgroundColor: cores.primaria,
+                        border: 'none',
+                        padding: '16px 32px',
+                        borderRadius: '24px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        boxShadow: `0 0 25px ${cores.primariaRgba}0.5)`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '10px'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = `0 0 35px ${cores.primariaRgba}0.7)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = `0 0 25px ${cores.primariaRgba}0.5)`;
+                      }}
+                    >
+                      <span>💳</span> PAGAR COM PIX
+                    </button>
+                  </div>
+                </div>
+
+                {/* Aviso Legal */}
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '12px',
+                  color: '#6B7280',
+                  marginTop: '40px',
+                  fontStyle: 'italic'
+                }}>
+                  Assinatura realizada por responsáveis maiores de 18 anos
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Janela de Convidar */}
+          {mostrarConvidar && !temporadaSelecionada && !episodioSelecionado && (
+            <div style={{ padding: '60px 40px', minHeight: '100vh' }}>
+              <button
+                onClick={() => setMostrarConvidar(false)}
+                style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: cores.primaria,
+                  backgroundColor: 'transparent',
+                  border: `2px solid ${cores.primaria}`,
+                  padding: '12px 24px',
+                  borderRadius: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: `0 0 10px ${cores.primariaRgba}0.3)`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = `${cores.primariaRgba}0.1)`;
+                  e.currentTarget.style.boxShadow = `0 0 20px ${cores.primariaRgba}0.5)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.boxShadow = `0 0 10px ${cores.primariaRgba}0.3)`;
+                }}
+              >
+                ← VOLTAR
+              </button>
+
+              <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <h1 style={{
+                  fontFamily: 'Orbitron, sans-serif',
+                  fontWeight: 900,
+                  fontSize: '48px',
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.02em',
+                  textShadow: `0 0 30px ${cores.primariaRgba}0.6), 0 0 60px ${cores.primariaRgba}0.3)`,
+                  marginBottom: '40px',
+                  textAlign: 'center'
+                }}>
+                  CONVIDE E GANHE
+                </h1>
+
+                {/* Painel MEUS GANHOS */}
+                <div style={{
+                  backgroundColor: '#1e1f20',
+                  border: `2px solid ${cores.primaria}`,
+                  borderRadius: '20px',
+                  padding: '40px',
+                  marginBottom: '40px',
+                  boxShadow: `0 0 30px ${cores.primariaRgba}0.4)`
+                }}>
+                  <h2 style={{
+                    fontFamily: 'Orbitron, sans-serif',
+                    fontSize: '28px',
+                    fontWeight: 700,
+                    color: cores.primaria,
+                    marginBottom: '30px',
+                    textShadow: `0 0 15px ${cores.primariaRgba}0.5)`,
+                    letterSpacing: '0.05em'
+                  }}>
+                    MEUS GANHOS
+                  </h2>
+
+                  {modo === 'adulto' ? (
+                    <div>
+                      <div style={{
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontSize: '36px',
+                        fontWeight: 900,
+                        color: '#FFD700',
+                        marginBottom: '15px',
+                        textShadow: `0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4)`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '15px'
+                      }}>
+                        <span>💰</span>
+                        <span>R$ {creditosPremium.toFixed(2)}</span>
+                      </div>
+                      <p style={{
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontSize: '16px',
+                        color: '#E3E3E3',
+                        marginBottom: '20px',
+                        letterSpacing: '0.05em'
+                      }}>
+                        Créditos Premium
+                      </p>
+                      <div style={{
+                        backgroundColor: '#0a0a0a',
+                        border: `1px solid ${cores.primariaRgba}0.3)`,
+                        borderRadius: '12px',
+                        padding: '20px',
+                        marginTop: '20px'
+                      }}>
+                        <p style={{
+                          fontFamily: 'Inter, sans-serif',
+                          fontSize: '14px',
+                          color: '#9AA0A6',
+                          lineHeight: '1.6'
+                        }}>
+                          <span style={{ color: '#00FF88', fontWeight: 700, textShadow: '0 0 10px rgba(0, 255, 136, 0.6)' }}>Ganhe R$ 10,00</span> por cada novo explorador que assinar o plano anual usando seu código de indicação.
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div style={{
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontSize: '20px',
+                        fontWeight: 700,
+                        color: cores.primaria,
+                        marginBottom: '20px',
+                        textShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                        letterSpacing: '0.05em'
+                      }}>
+                        Convide 3 amigos para desbloquear o MÓDULO SECRETO
+                      </div>
+                      <div style={{
+                        backgroundColor: '#0a0a0a',
+                        borderRadius: '12px',
+                        height: '30px',
+                        border: `2px solid ${cores.primariaRgba}0.3)`,
+                        overflow: 'hidden',
+                        marginBottom: '15px',
+                        position: 'relative'
+                      }}>
+                        <div style={{
+                          width: `${(amigosConvidados / 3) * 100}%`,
+                          height: '100%',
+                          background: `linear-gradient(90deg, ${cores.primaria} 0%, ${cores.primariaRgba}0.6) 100%)`,
+                          boxShadow: `0 0 20px ${cores.primariaRgba}0.6)`,
+                          transition: 'width 0.5s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontFamily: 'Orbitron, sans-serif',
+                          fontSize: '12px',
+                          fontWeight: 700,
+                          color: '#000000'
+                        }}>
+                          {amigosConvidados}/3
+                        </div>
+                      </div>
+                      <p style={{
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '14px',
+                        color: '#9AA0A6',
+                        marginTop: '10px'
+                      }}>
+                        {amigosConvidados < 3 
+                          ? `Faltam ${3 - amigosConvidados} ${amigosConvidados === 2 ? 'amigo' : 'amigos'} para desbloquear! 🎁`
+                          : '🎉 Parabéns! Módulo secreto desbloqueado!'}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Código de Indicação */}
+                <div style={{
+                  backgroundColor: '#1e1f20',
+                  border: `2px solid ${cores.primaria}`,
+                  borderRadius: '20px',
+                  padding: '40px',
+                  boxShadow: `0 0 30px ${cores.primariaRgba}0.4)`
+                }}>
+                  <h3 style={{
+                    fontFamily: 'Orbitron, sans-serif',
+                    fontSize: '20px',
+                    fontWeight: 700,
+                    color: cores.primaria,
+                    marginBottom: '20px',
+                    textShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                    letterSpacing: '0.05em'
+                  }}>
+                    SEU CÓDIGO DE INDICAÇÃO
+                  </h3>
+                  <div style={{
+                    display: 'flex',
+                    gap: '15px',
+                    alignItems: 'center',
+                    flexWrap: 'wrap'
+                  }}>
+                    <div style={{
+                      flex: 1,
+                      minWidth: '200px',
+                      backgroundColor: '#0a0a0a',
+                      border: `2px solid ${cores.primaria}`,
+                      borderRadius: '12px',
+                      padding: '20px',
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 700,
+                      color: cores.primaria,
+                      textAlign: 'center',
+                      letterSpacing: '0.1em',
+                      textShadow: `0 0 15px ${cores.primariaRgba}0.6)`,
+                      boxShadow: `0 0 20px ${cores.primariaRgba}0.3)`
+                    }}>
+                      {codigoIndicacao}
+                    </div>
+                    <button
+                      onClick={copiarCodigo}
+                      style={{
+                        fontFamily: 'Orbitron, sans-serif',
+                        fontWeight: 700,
+                        fontSize: '14px',
+                        color: '#000000',
+                        backgroundColor: cores.primaria,
+                        border: 'none',
+                        padding: '20px 30px',
+                        borderRadius: '12px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        boxShadow: `0 0 20px ${cores.primariaRgba}0.5)`,
+                        whiteSpace: 'nowrap'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = `0 0 30px ${cores.primariaRgba}0.7)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = `0 0 20px ${cores.primariaRgba}0.5)`;
+                      }}
+                    >
+                      📋 COPIAR
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Sala de Estudo - Página do Episódio */}
           {episodioSelecionado && (
             <div style={{ 
@@ -837,7 +1386,7 @@ const AIStudioPortal = () => {
           )}
 
           {/* Página Principal (Grid de Temporadas) */}
-          {!temporadaSelecionada && !episodioSelecionado && (
+          {!temporadaSelecionada && !episodioSelecionado && !mostrarPlanos && !mostrarConvidar && (
             <div>
       {/* Menu Superior Estilo Studio */}
       <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '15px 40px', borderBottom: `1px solid ${cores.primariaRgba}0.2)`, backgroundColor: 'rgba(19, 19, 20, 0.9)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 100 }}>
