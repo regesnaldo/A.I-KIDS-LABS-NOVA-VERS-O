@@ -114,6 +114,23 @@ const AIStudioPortal = () => {
   const [modo, setModo] = useState<'kids' | 'adulto' | null>(null);
   const [temporadaSelecionada, setTemporadaSelecionada] = useState<number | null>(null);
   const [episodioSelecionado, setEpisodioSelecionado] = useState<{ temporadaId: number; episodioId: number } | null>(null);
+  const [episodiosAssistidos, setEpisodiosAssistidos] = useState<Set<string>>(new Set());
+
+  // Função para marcar episódio como assistido
+  const marcarEpisodioAssistido = (temporadaId: number, episodioId: number) => {
+    const chave = `${temporadaId}-${episodioId}`;
+    setEpisodiosAssistidos(prev => new Set([...prev, chave]));
+  };
+
+  // Função para verificar se temporada está completa
+  const temporadaCompleta = (temporadaId: number) => {
+    for (let i = 1; i <= 10; i++) {
+      if (!episodiosAssistidos.has(`${temporadaId}-${i}`)) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   // Função para gerar episódios dinamicamente
   const gerarEpisodios = (temporadaId: number) => {
@@ -149,6 +166,13 @@ const AIStudioPortal = () => {
   };
 
   const cores = obterCoresNeon();
+
+  // Marcar episódio como assistido quando visualizado
+  React.useEffect(() => {
+    if (episodioSelecionado) {
+      marcarEpisodioAssistido(episodioSelecionado.temporadaId, episodioSelecionado.episodioId);
+    }
+  }, [episodioSelecionado]);
 
   // Função para voltar
   const voltar = () => {
@@ -888,6 +912,25 @@ const AIStudioPortal = () => {
           >
             FAMÍLIA
           </span>
+          <span 
+            className="nav-link" 
+            style={{ 
+              color: '#9AA0A6', 
+              textTransform: 'uppercase',
+              '--neon-color': cores.primaria,
+              '--neon-rgba': cores.primariaRgba
+            } as React.CSSProperties & { '--neon-color': string; '--neon-rgba': string }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = cores.primaria;
+              e.currentTarget.style.textShadow = `0 0 10px ${cores.primariaRgba}0.6)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#9AA0A6';
+              e.currentTarget.style.textShadow = 'none';
+            }}
+          >
+            BLOG
+          </span>
           <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#333', border: `2px solid ${cores.primaria}`, boxShadow: `0 0 10px ${cores.primariaRgba}0.5)`, cursor: 'pointer', transition: 'all 0.3s ease' }}></div>
         </div>
       </nav>
@@ -966,10 +1009,58 @@ const AIStudioPortal = () => {
                   borderRadius: '50%',
                   filter: 'blur(40px)'
                 }}></div>
+                
+                {/* Selo de Conclusão de Temporada */}
+                {temporadaCompleta(temporada.id) && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    width: '60px',
+                    height: '60px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#0a0a0a',
+                    borderRadius: '50%',
+                    border: `3px solid ${cores.primaria}`,
+                    boxShadow: `0 0 20px ${cores.primariaRgba}0.8), 0 0 40px ${cores.primariaRgba}0.4)`,
+                    animation: 'pulse-badge 2s ease-in-out infinite',
+                    zIndex: 10
+                  }}>
+                    <span style={{
+                      fontSize: '32px',
+                      filter: `drop-shadow(0 0 10px ${cores.primariaRgba}0.8))`
+                    }}>
+                      {modo === 'kids' ? '⭐' : '🏆'}
+                    </span>
+                  </div>
+                )}
               </div>
               
               {/* Conteúdo do Card */}
-              <div style={{ padding: '20px' }}>
+              <div style={{ padding: '20px', position: 'relative' }}>
+                {temporadaCompleta(temporada.id) && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '-10px',
+                    right: '20px',
+                    fontFamily: 'Orbitron, sans-serif',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: cores.primaria,
+                    backgroundColor: '#0a0a0a',
+                    padding: '4px 8px',
+                    borderRadius: '12px',
+                    border: `1px solid ${cores.primaria}`,
+                    boxShadow: `0 0 10px ${cores.primariaRgba}0.5)`,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    animation: 'pulse-badge 2s ease-in-out infinite'
+                  }}>
+                    {modo === 'kids' ? '✨ COMPLETA!' : 'CONCLUÍDA'}
+                  </div>
+                )}
                 <div style={{ 
                   fontFamily: 'Orbitron, sans-serif', 
                   fontSize: '14px', 
@@ -1001,6 +1092,157 @@ const AIStudioPortal = () => {
           )}
         </div>
       )}
+
+      {/* Botão Flutuante WhatsApp */}
+      <a
+        href="https://wa.me/5511999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          backgroundColor: '#25D366',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 0 30px rgba(37, 211, 102, 0.6), 0 0 60px rgba(37, 211, 102, 0.3)',
+          zIndex: 999,
+          transition: 'all 0.3s ease',
+          textDecoration: 'none',
+          animation: 'pulse-whatsapp 2s ease-in-out infinite'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.1)';
+          e.currentTarget.style.boxShadow = '0 0 40px rgba(37, 211, 102, 0.8), 0 0 80px rgba(37, 211, 102, 0.5)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.boxShadow = '0 0 30px rgba(37, 211, 102, 0.6), 0 0 60px rgba(37, 211, 102, 0.3)';
+        }}
+      >
+        <span style={{ fontSize: '32px' }}>💬</span>
+      </a>
+
+      {/* Footer com Ícones Sociais */}
+      <footer style={{
+        backgroundColor: '#131314',
+        borderTop: `2px solid ${cores.primariaRgba}0.2)`,
+        padding: '40px',
+        marginTop: '80px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '30px',
+        flexWrap: 'wrap'
+      }}>
+        <div style={{
+          fontFamily: 'Orbitron, sans-serif',
+          fontSize: '14px',
+          color: '#9AA0A6',
+          fontWeight: 600,
+          letterSpacing: '0.1em',
+          marginRight: '20px'
+        }}>
+          SIGA-NOS:
+        </div>
+        
+        {/* Instagram */}
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            width: '50px',
+            height: '50px',
+            borderRadius: '12px',
+            backgroundColor: '#1e1f20',
+            border: `2px solid ${cores.primaria}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            boxShadow: `0 0 15px ${cores.primariaRgba}0.3)`
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+            e.currentTarget.style.boxShadow = `0 0 25px ${cores.primariaRgba}0.6)`;
+            e.currentTarget.style.borderColor = cores.primaria;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1) translateY(0)';
+            e.currentTarget.style.boxShadow = `0 0 15px ${cores.primariaRgba}0.3)`;
+          }}
+        >
+          <span style={{ fontSize: '24px' }}>📷</span>
+        </a>
+
+        {/* YouTube */}
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            width: '50px',
+            height: '50px',
+            borderRadius: '12px',
+            backgroundColor: '#1e1f20',
+            border: `2px solid ${cores.primaria}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            boxShadow: `0 0 15px ${cores.primariaRgba}0.3)`
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+            e.currentTarget.style.boxShadow = `0 0 25px ${cores.primariaRgba}0.6)`;
+            e.currentTarget.style.borderColor = cores.primaria;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1) translateY(0)';
+            e.currentTarget.style.boxShadow = `0 0 15px ${cores.primariaRgba}0.3)`;
+          }}
+        >
+          <span style={{ fontSize: '24px' }}>▶️</span>
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            width: '50px',
+            height: '50px',
+            borderRadius: '12px',
+            backgroundColor: '#1e1f20',
+            border: `2px solid ${cores.primaria}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            boxShadow: `0 0 15px ${cores.primariaRgba}0.3)`
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+            e.currentTarget.style.boxShadow = `0 0 25px ${cores.primariaRgba}0.6)`;
+            e.currentTarget.style.borderColor = cores.primaria;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1) translateY(0)';
+            e.currentTarget.style.boxShadow = `0 0 15px ${cores.primariaRgba}0.3)`;
+          }}
+        >
+          <span style={{ fontSize: '24px' }}>💼</span>
+        </a>
+      </footer>
     </div>
   );
 };
