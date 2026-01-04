@@ -1,3 +1,11 @@
+html, body, #root {
+  width: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,18 +17,11 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: Inter, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
 }
 
 /* Animações de Brilho Neon */

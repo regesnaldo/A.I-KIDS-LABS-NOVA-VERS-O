@@ -298,7 +298,6 @@ const AIStudioPortal = () => {
       fontFamily: 'Inter, sans-serif', 
       position: 'relative',
       width: '100%',
-      maxWidth: '100%',
       margin: '0 auto'
     }}>
       {/* Tela de Seleção Inicial (Kids vs Adulto) */}
@@ -479,7 +478,7 @@ const AIStudioPortal = () => {
                 ← VOLTAR
               </button>
 
-              <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+              <div style={{ width: '95%', margin: '0 auto', textAlign: 'center' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -512,7 +511,6 @@ const AIStudioPortal = () => {
                   {/* Plano Mensal */}
                   <div style={{
                     flex: '1 1 400px',
-                    maxWidth: '450px',
                     backgroundColor: '#1e1f20',
                     border: `2px solid ${cores.primariaRgba}0.3)`,
                     borderRadius: '20px',
@@ -608,7 +606,6 @@ const AIStudioPortal = () => {
                   {/* Plano Anual */}
                   <div style={{
                     flex: '1 1 400px',
-                    maxWidth: '450px',
                     backgroundColor: '#1e1f20',
                     border: `3px solid ${cores.primaria}`,
                     borderRadius: '20px',
@@ -776,7 +773,7 @@ const AIStudioPortal = () => {
                 ← VOLTAR
               </button>
 
-              <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -1260,7 +1257,7 @@ const AIStudioPortal = () => {
                 backdropFilter: 'blur(12px)'
               }}>
                 <div style={{
-                  maxWidth: '1400px',
+                  width: '95%',
                   margin: '0 auto'
                 }}>
                   <div style={{
@@ -1650,7 +1647,7 @@ const AIStudioPortal = () => {
                 backdropFilter: 'blur(12px)'
               }}>
                 <div style={{
-                  maxWidth: '1400px',
+                  width: '95%',
                   margin: '0 auto'
                 }}>
                   <div style={{
@@ -1776,7 +1773,7 @@ const AIStudioPortal = () => {
                 ← VOLTAR
               </button>
 
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h2 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -1923,7 +1920,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -2033,7 +2030,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -2221,7 +2218,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -2376,7 +2373,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -2689,7 +2686,7 @@ const AIStudioPortal = () => {
               >
                 ← SAIR
               </button>
-              <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -2897,7 +2894,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -3045,7 +3042,7 @@ const AIStudioPortal = () => {
               >
                 ← VOLTAR
               </button>
-              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ width: '95%', margin: '0 auto' }}>
                 <h1 style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontWeight: 900,
@@ -3696,7 +3693,7 @@ const AIStudioPortal = () => {
         >
           DOMINE A INTELIGÊNCIA
         </h1>
-        <p style={{ color: '#9aa0a6', maxWidth: '600px', fontSize: '16px', lineHeight: '1.6' }}>Explore o futuro agora com o laboratório imersivo para todas as idades.</p>
+        <p style={{ color: '#9aa0a6', fontSize: '16px', lineHeight: '1.6' }}>Explore o futuro agora com o laboratório imersivo para todas as idades.</p>
       </div>
 
       {/* Carrosséis Estilo Netflix - 10 Categorias */}
@@ -3731,7 +3728,6 @@ const AIStudioPortal = () => {
                   onClick={() => setEpisodioSelecionado({ temporadaId: categoria.id, episodioId: aula.id })}
                   style={{
                     minWidth: '280px',
-                    maxWidth: '280px',
                     backgroundColor: '#1e1f20',
                     borderRadius: '8px',
                     overflow: 'hidden',
