@@ -3997,5 +3997,4 @@ const AIStudioPortal = () => {
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode><AIStudioPortal /></React.StrictMode>
-);
+  <React.StrictMode><AIStudioPortal /></React.StrictMode> 
