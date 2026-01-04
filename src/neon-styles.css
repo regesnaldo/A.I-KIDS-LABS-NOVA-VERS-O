@@ -1,25 +1,16 @@
-/* RESET TOTAL DE ESCALA */
-* { 
-  margin: 0 !important; 
-  padding: 0 !important; 
-  box-sizing: border-box !important; 
-}
+/* RESET TOTAL PARA TELA CHEIA */
+* { margin: 0; padding: 0; box-sizing: border-box !important; }
 
 html, body, #root {
   width: 100vw !important;
   height: 100vh !important;
-  min-width: 100% !important;
-  min-height: 100% !important;
   background-color: #0B0E14 !important;
   overflow-x: hidden !important;
+  display: block !important;
 }
 
-/* ESTICA O CONTEÚDO PARA A TELA TODA */
-.app-container, main, section, .hero-section {
+/* FORÇA O CONTEÚDO A OCUPAR 100% */
+div, section, main, .app-container {
   width: 100% !important;
   max-width: none !important;
-  min-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
 }
