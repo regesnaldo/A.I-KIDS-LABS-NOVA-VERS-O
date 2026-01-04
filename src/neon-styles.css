@@ -1,38 +1,44 @@
-/* FORÇA BRUTA: 100% DA TELA SEM DESCULPAS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* DNA: Fundo preto profundo e sem barras brancas */
 html, body, #root {
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background-color: #050505 !important; /* Cor oficial do seu template */
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #050505 !important;
+  color: white;
   overflow-x: hidden;
 }
 
-/* O GRADIENTE DO SEU INDEX.HTML.TXT */
-.portal-background {
-  width: 100% !important;
-  min-height: 100vh !important;
-  background: linear-gradient(45deg, #0f172a, #581c87, #050505) !important;
-  padding: 60px 4% !important;
+.portal-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px 2%;
+  background-color: #050505;
 }
 
-/* EFEITO NEON E GLASS DO SEU TEMPLATE */
-.neon-title {
-  font-family: 'Orbitron', sans-serif !important;
-  text-shadow: 0 0 15px #7c3aed, 0 0 30px #7c3aed !important;
-  color: white !important;
+.neon-header {
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 15px #7c3aed;
+  color: #7c3aed;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.card-gigante {
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 20px;
-  padding: 40px;
-  transition: transform 0.4s;
+/* CARDS NO ESTILO GLASS QUE VOCÊ TINHA */
+.card-dna {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: 0.3s;
 }
 
-.card-gigante:hover {
-  transform: scale(1.05);
-  border-color: #7c3aed !important;
+.card-dna:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  transform: translateY(-5px);
 }
