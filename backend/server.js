@@ -17,10 +17,12 @@ app.use(morgan('combined'));
 // Import routes
 const moduleRoutes = require('./routes/modules');
 const userRoutes = require('./routes/users');
+const paymentRoutes = require('./routes/payments');
 
 // Routes
 app.use('/api/modules', moduleRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // Serve static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

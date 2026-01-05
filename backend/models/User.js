@@ -84,6 +84,22 @@ const userSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  subscription: {
+    status: {
+      type: String,
+      enum: ['INACTIVE', 'PENDING', 'ACTIVE', 'CANCELLED', 'EXPIRED'],
+      default: 'INACTIVE'
+    },
+    planId: String,
+    subscriptionId: String,
+    startDate: Date,
+    nextBillingDate: Date,
+    endDate: Date,
+    amount: Number,
+    cancellationDate: Date,
+    cancellationReason: String,
+    paymentMethod: String
   }
 });
 
