@@ -41,4 +41,9 @@ router.post('/webhook', processWebhook);
 // @access  Public
 router.post('/notification', handlePagSeguroNotification);
 
+// @route   GET api/payments/subscription/:subscriptionId
+// @desc    Get subscription details from PagSeguro
+// @access  Private
+router.get('/subscription/:subscriptionId', auth, getSubscriptionDetails);
+
 module.exports = router;
