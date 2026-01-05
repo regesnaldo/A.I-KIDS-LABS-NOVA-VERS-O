@@ -168,16 +168,6 @@ html, body {
   font-size: 0.9rem;
 }
 
-/* DEBUG: Remove this after fixing hover */
-.lab-card {
-  outline: 3px solid red;
-}
-
-.app,
-.labs-grid,
-.season-row {
-  overflow: visible;
-}
 
 .card-title {
   color: white;
