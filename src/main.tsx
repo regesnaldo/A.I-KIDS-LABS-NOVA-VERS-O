@@ -58,7 +58,24 @@ function getModuleState(moduleId: string, context: AIContext): 'completed' | 're
 
 const AIStudioPortal = () => (
   <main className="app">
-    <h1 className="title">A.I. KIDS LABS</h1>
+    {/* HERO SECTION - Temporada 01 destaque */}
+    <section className="hero">
+      <div className="hero-content">
+        <h1 className="hero-title">A.I. KIDS LABS</h1>
+        <p className="hero-description">
+          Explore o fascinante mundo da Inteligência Artificial com missões divertidas e educativas! 
+          Aprenda conceitos importantes enquanto se diverte em uma jornada tecnológica única.
+        </p>
+        <div className="hero-buttons">
+          <button className="hero-button primary" onClick={() => console.log('Assistir clicado')}>
+            ▶️ Assistir
+          </button>
+          <button className="hero-button secondary" onClick={() => console.log('Mais Informações clicado')}>
+            ℹ️ Mais Informações
+          </button>
+        </div>
+      </div>
+    </section>
     
     {/* GRADE DE TEMPORADAS - LAYOUT NETFLIX */}
     <section className="labs-grid">
@@ -116,17 +133,24 @@ const AIStudioPortal = () => (
                     
                     {/* INFO REVELADA NO HOVER */}
                     <div className="card-info">
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ color: '#9ca3af', fontSize: '0.9rem' }}>
-                          {module.missions[0]?.xp || 100} XP
-                        </span>
-                        <span className={`difficulty-${module.missions[0]?.difficulty || 'medium'}`}>
-                          {module.missions[0]?.difficulty || 'medium'}
-                        </span>
+                      <div className="card-info-content">
+                        <div className="card-info-stats">
+                          <span className="card-xp">
+                            {module.missions[0]?.xp || 100} XP
+                          </span>
+                          <span className="card-duration">
+                            {module.missions[0]?.difficulty || 'medium'}
+                          </span>
+                        </div>
+                        <div className="card-actions">
+                          <button className="play-button" onClick={(e) => { e.stopPropagation(); console.log('Play module:', module.id); }}>
+                            ▶️
+                          </button>
+                          <button className="like-button" onClick={(e) => { e.stopPropagation(); console.log('Like module:', module.id); }}>
+                            👍
+                          </button>
+                        </div>
                       </div>
-                      <button className="play-button" onClick={() => console.log('Play module:', module.id)}>
-                        ▶️
-                      </button>
                     </div>
                   </article>
                 ))
