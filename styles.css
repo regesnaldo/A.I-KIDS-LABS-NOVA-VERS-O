@@ -131,9 +131,11 @@ html, body {
   transform-origin: center center;
   overflow: hidden;
   will-change: transform;
+  pointer-events: auto;
 }
 
 .lab-card:hover {
+  background: red;
   transform: scale(1.15);
   z-index: 50;
   box-shadow: 0 12px 24px rgba(0,0,0,0.6);
@@ -165,6 +167,17 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
+}
+
+/* DEBUG: Remove this after fixing hover */
+.lab-card {
+  outline: 3px solid red;
+}
+
+.app,
+.labs-grid,
+.season-row {
+  overflow: visible;
 }
 
 .card-title {
@@ -237,120 +250,6 @@ html, body {
 .card-meta {
   display: flex;
   gap: 10px;
-  font-size: 0.75rem;
-}
-
-.difficulty.easy { color: #7CFC90; }
-.difficulty.medium { color: #FFD700; }
-.difficulty.hard { color: #FF7A7A; }
-
-/* INFO DO CARD NO HOVER */
-.card-info {
-  opacity: 0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(11, 11, 11, 0.95);
-  padding: 15px;
-  border-radius: 0 0 14px 14px;
-  transition: opacity 0.25s ease;
-  z-index: 5;
-}
-
-.card-info-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card-info-stats {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.card-xp {
-  color: #9ca3af;
-  font-size: 0.9rem;
-}
-
-.card-duration {
-  color: #9ca3af;
-  font-size: 0.9rem;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.play-button {
-  display: block;
-  margin: 0;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(124, 58, 237, 0.8);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.25s ease;
-}
-
-.like-button {
-  display: block;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(109, 109, 110, 0.7);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.25s ease;
-}
-
-.play-button:hover {
-  background: #7c3aed;
-}
-
-.like-button:hover {
-  background: rgba(109, 109, 110, 1);
-}
-
-.lab-card:hover .card-info {
-  opacity: 1;
-}
-
-/* CARD HOVER OVERLAY INFO */
-.card-hover-info {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  display: flex;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-}
-
-.lab-card:hover .card-hover-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.duration,
-.difficulty {
-  background: rgba(0,0,0,0.75);
-  padding: 6px 10px;
-  border-radius: 4px;
   font-size: 0.75rem;
 }
 
