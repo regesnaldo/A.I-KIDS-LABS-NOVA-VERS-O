@@ -52,6 +52,16 @@ html, body, #root {
   letter-spacing: 0.1em;
 }
 
+/* GRADE DE CARDS DEFINITIVA - AUTO-AJUSTÁVEL */
+.cards-grid {
+  display: grid;
+  /* Cria colunas que se ajustam sozinhas, respeitando o tamanho mínimo de 220px */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+  width: 100%;
+  transform: none !important;
+}
+
 /* GRID 5 COLUNAS - LAYOUT NETFLIX FUTURISTA - FULLSCREEN */
 .mission-grid {
   display: grid !important;

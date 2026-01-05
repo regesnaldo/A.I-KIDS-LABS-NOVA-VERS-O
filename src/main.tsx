@@ -71,8 +71,8 @@ const AIStudioPortal = () => (
     <div className="portal-container" style={{ width: '100%' }}>
       <h1 className="neon-header" style={{ fontSize: '5rem', fontWeight: 900 }}>A.I. KIDS LABS</h1>
       
-      {/* GRID 5 COLUNAS - NETFLIX FUTURISTA - FULLSCREEN */}
-      <div className="mission-grid" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
+      {/* GRADE DE CARDS DEFINITIVA - AUTO-AJUSTÁVEL */}
+      <div className="cards-grid">
         {missions.map((m) => (
           <div key={m.id} className="card-dna">
             <div style={{ 
