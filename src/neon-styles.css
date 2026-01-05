@@ -1,0 +1,136 @@
+/* ESTILOS NEON PREMIUM PARA A.I. KIDS LABS */
+
+/* ANIMAÇÕES E TRANSIÇÕES */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.8), 0 0 30px rgba(124, 58, 237, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.5);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ESTILOS NEON PARA COMPONENTES */
+.lab-card {
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+.lab-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff00cc, #333399, #00ccff, #00ffcc, #ff00cc);
+  background-size: 400%;
+  border-radius: 16px;
+  z-index: -1;
+  animation: neonGlow 3s linear infinite;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.lab-card:hover::before {
+  opacity: 1;
+  animation: neonGlow 1.5s linear infinite;
+}
+
+.lab-card:not(:hover)::before {
+  background: linear-gradient(45deg, #7c3aed, #3b82f6, #10b981, #f59e0b, #7c3aed);
+  background-size: 400%;
+  animation: neonGlow 4s linear infinite;
+}
+
+/* ESTILOS PARA BOTÕES COM EFEITO NEON */
+.btn-play {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-play::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(25deg);
+  transition: all 0.5s;
+}
+
+.btn-play:hover::after {
+  left: 120%;
+}
+
+/* ESTILO PARA SCROLLBAR PERSONALIZADO */
+.season-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.season-row::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.season-row::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #7c3aed, #3b82f6);
+  border-radius: 4px;
+}
+
+.season-row::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #6d28d9, #2563eb);
+}
+
+/* EFEITOS PARA MODOS ESPECIAIS */
+@media (prefers-reduced-motion: no-preference) {
+  .lab-card {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* ESTILOS PARA ACESSIBILIDADE */
+@media (prefers-contrast: high) {
+  .lab-card {
+    border: 2px solid white;
+  }
+  
+  .btn-play, .btn-like {
+    border: 1px solid white;
+  }
+}
+
+/* ESTILOS PARA DIFERENTES TIPOS DE DISPOSITIVOS */
+@media (hover: hover) {
+  .lab-card {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Para dispositivos touch */
+  .lab-card {
+    transition: all 0.2s ease;
+  }
+  
+  .lab-card:focus {
+    transform: scale(1.1);
+  }
+}

@@ -78,6 +78,91 @@
   overflow: visible !important;  /* PASSO 4 - Allow hover expansion */
 }
 
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .app {
+    padding: 20px 2vw;
+  }
+  
+  .title {
+    font-size: 3rem !important;
+  }
+  
+  .labs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    gap: 20px !important;
+  }
+  
+  .lab-card {
+    min-width: 200px;
+    max-width: 220px;
+    height: 280px;
+  }
+  
+  .season-row {
+    gap: 15px;
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.5rem !important;
+  }
+  
+  .labs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+  
+  .lab-card {
+    min-width: 100%;
+    max-width: 100%;
+    height: 250px;
+  }
+  
+  .season-row {
+    display: block;
+    overflow-x: visible;
+  }
+}
+
+/* TV MODE SUPPORT */
+@media (hover: none) and (pointer: coarse) {
+  .lab-card {
+    transition: all 0.3s ease;
+  }
+  
+  .lab-card:focus {
+    transform: scale(1.2);
+    outline: 3px solid #7c3aed;
+    z-index: 9999;
+  }
+  
+  .card-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* CONTROLE PARENTAL */
+.lab-card.parental-locked {
+  filter: blur(4px);
+  position: relative;
+}
+
+.lab-card.parental-locked::before {
+  content: '🔒';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  z-index: 100;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
 /* SEASON CONTAINER */
 .season-container {
   margin-bottom: 30px;
@@ -121,19 +206,20 @@
   overflow: hidden;
   will-change: transform;
   pointer-events: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .lab-card:hover {
   transform: scale(1.4);  /* IMPACT ZOOM */
   z-index: 9999 !important;  /* MAXIMUM Z-INDEX */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.6);
 }
 
 .lab-card:focus-visible {
-  outline: none;
-  transform: scale(1.15);
-  z-index: 60;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.7);
+  outline: 2px solid #7c3aed;
+  transform: scale(1.4);
+  z-index: 9999 !important;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.8);
 }
 
 .lab-card:focus-visible .card-overlay {
@@ -165,6 +251,7 @@
   text-align: center;
   margin: 15px;
   padding: 0 10px;
+  z-index: 1;
 }
 
 /* ROWS DE TEMPORADAS NETFLIX */
@@ -176,6 +263,16 @@
   padding: 40px 0; /* Increased to allow for hover expansion */
   scrollbar-width: none;
   overflow: visible !important;  /* LIBERAR ESPAÇO */
+  scroll-behavior: smooth;
+}
+
+.season-row::-webkit-scrollbar {
+  display: none;
+}
+
+.season-row > .lab-card {
+  flex: 0 0 auto;
+  transition: all 0.3s ease;
 }
 
 .season-row::-webkit-scrollbar { 
@@ -219,11 +316,14 @@
   font-size: 0.9rem;
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .btn-play:hover {
-  background: #e0e0e0;
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .btn-like {
@@ -234,11 +334,14 @@
   font-size: 0.9rem;
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .btn-like:hover {
   background: rgba(129,129,130,0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .card-meta {

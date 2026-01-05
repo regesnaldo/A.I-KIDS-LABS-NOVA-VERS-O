@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import '../neon-styles.css'
 import './neon-styles.css'
 
 // Tipos para as fases pedagógicas
@@ -129,14 +130,24 @@ const getMissionModules = (seasonId: string): MissionModule[] => {
 
 // Componente de Card de Laboratório
 const LabCard = ({ module }: { module: MissionModule }) => {
+  // Verificar se o conteúdo deve ser bloqueado por controle parental
+  const isParentalLocked = module.difficulty === 'hard' && module.state !== 'completed';
+  
   return (
-    <article className={`lab-card ${module.state}`} tabIndex={0}>
+    <article className={`lab-card ${module.state} ${isParentalLocked ? 'parental-locked' : ''}`} 
+             tabIndex={0}
+             onKeyDown={(e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                 e.preventDefault();
+                 // Lógica para interação via teclado
+               }
+             }}>
       <h3 className="card-title">{module.title}</h3>
       
       <div className="card-overlay">
         <div className="card-actions">
           <button className="btn-play">▶ Assistir</button>
-          <button className="btn-like">👍 Mais Informações</button>
+          <button className="btn-like">ℹ️ Mais Informações</button>
         </div>
         
         <div className="card-meta">
