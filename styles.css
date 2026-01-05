@@ -128,14 +128,15 @@ html, body {
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
   cursor: pointer !important;
   position: relative !important;
-  transform-origin: center !important;
+  transform-origin: center center !important;
   overflow: hidden !important;
+  will-change: transform;
 }
 
 .lab-card:hover {
-  transform: scale(1.08) !important; /* Escala segura para listas horizontais */
-  z-index: 10 !important;
-  box-shadow: 0 16px 32px rgba(0,0,0,0.6) !important;
+  transform: scale(1.18) !important;
+  z-index: 50 !important;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6) !important;
 }
 
 .card-title {
