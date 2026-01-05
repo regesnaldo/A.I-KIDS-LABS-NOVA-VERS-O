@@ -25,6 +25,7 @@ html, body {
   flex-direction: column;
   padding: 32px 4vw;
   background: #000 !important;
+  overflow: visible;
 }
 
 /* TÍTULO */
@@ -185,7 +186,7 @@ html, body {
   gap: 20px;
   overflow-x: auto;
   overflow-y: visible; /* ESSENCIAL para hover */
-  padding: 20px 0;
+  padding: 40px 0; /* Increased to allow for hover expansion */
   scrollbar-width: none;
 }
 
