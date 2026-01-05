@@ -62,60 +62,78 @@ const AIStudioPortal = () => (
     
     {/* GRADE DE TEMPORADAS - LAYOUT NETFLIX */}
     <section className="labs-grid">
-      {seasonsWithModules.map((season) => (
-        <div key={season.id}>
-          <h2 style={{ 
-            color: '#7c3aed', 
-            fontSize: '1.5rem', 
-            fontWeight: 700,
-            fontFamily: 'Orbitron, sans-serif',
-            marginBottom: '15px',
-            textShadow: '0 0 10px rgba(124, 58, 237, 0.5)'
-          }}>{season.title}</h2>
-          
-          <section className="season-row">
-            {season.modules.map((module) => (
-              <article 
-                className={`lab-card ${module.state}`}
-                key={module.id}
-                style={{
-                  opacity: module.state === 'locked' ? 0.5 : 1,
-                  border: module.state === 'completed' ? '2px solid #10b981' : 
-                         module.state === 'recommended' ? '2px solid #f59e0b' : 
-                         '1px solid rgba(124, 58, 237, 0.3)'
-                }}
-              >
-                <div style={{ 
-                  fontSize: '4rem', 
-                  marginBottom: '20px',
-                  filter: 'drop-shadow(0 0 10px rgba(124, 58, 237, 0.5))'
-                }}>📚</div>
-                <h2 style={{ 
-                  fontSize: '1.8rem', 
-                  color: module.state === 'locked' ? '#6b7280' : 'white',
-                  fontFamily: 'Orbitron, sans-serif',
-                  fontWeight: 900,
-                  letterSpacing: '0.05em',
-                  textShadow: '0 0 15px rgba(124, 58, 237, 0.6)',
-                  marginBottom: '12px'
-                }}>{module.title}</h2>
-                <p style={{ 
-                  color: module.state === 'locked' ? '#6b7280' : '#9ca3af', 
-                  fontSize: '1rem', 
-                  marginTop: '8px',
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 500,
-                  lineHeight: '1.4'
-                }}>
-                  {module.state === 'completed' ? '✓ Concluído' : 
-                   module.state === 'locked' ? '🔒 Bloqueado' : 
-                   `${module.missions.length} missões disponíveis`}
+      {seasonsWithModules && seasonsWithModules.length > 0 ? (
+        seasonsWithModules.map((season) => (
+          <div key={season.id}>
+            <h2 style={{ 
+              color: '#7c3aed', 
+              fontSize: '1.5rem', 
+              fontWeight: 700,
+              fontFamily: 'Orbitron, sans-serif',
+              marginBottom: '15px',
+              textShadow: '0 0 10px rgba(124, 58, 237, 0.5)'
+            }}>{season.title}</h2>
+            
+            <section className="season-row">
+              {season.modules && season.modules.length > 0 ? (
+                season.modules.map((module) => (
+                  <article 
+                    className={`lab-card ${module.state}`}
+                    key={module.id}
+                    style={{
+                      opacity: module.state === 'locked' ? 0.5 : 1,
+                      border: module.state === 'completed' ? '2px solid #10b981' : 
+                             module.state === 'recommended' ? '2px solid #f59e0b' : 
+                             '1px solid rgba(124, 58, 237, 0.3)'
+                    }}
+                  >
+                    <div style={{ 
+                      fontSize: '4rem', 
+                      marginBottom: '20px',
+                      filter: 'drop-shadow(0 0 10px rgba(124, 58, 237, 0.5))'
+                    }}>📚</div>
+                    <h2 style={{ 
+                      fontSize: '1.8rem', 
+                      color: module.state === 'locked' ? '#6b7280' : 'white',
+                      fontFamily: 'Orbitron, sans-serif',
+                      fontWeight: 900,
+                      letterSpacing: '0.05em',
+                      textShadow: '0 0 15px rgba(124, 58, 237, 0.6)',
+                      marginBottom: '12px'
+                    }}>{module.title}</h2>
+                    <p style={{ 
+                      color: module.state === 'locked' ? '#6b7280' : '#9ca3af', 
+                      fontSize: '1rem', 
+                      marginTop: '8px',
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: 500,
+                      lineHeight: '1.4'
+                    }}>
+                      {module.state === 'completed' ? '✓ Concluído' : 
+                       module.state === 'locked' ? '🔒 Bloqueado' : 
+                       `${module.missions.length} missões disponíveis`}
+                    </p>
+                  </article>
+                ))
+              ) : (
+                <p style={{ color: '#6b7280', textAlign: 'center', width: '100%' }}>
+                  Nenhum módulo disponível
                 </p>
-              </article>
-            ))}
-          </section>
+              )}
+            </section>
+          </div>
+        ))
+      ) : (
+        <div style={{ 
+          color: '#6b7280', 
+          textAlign: 'center', 
+          width: '100%',
+          padding: '40px 0',
+          fontSize: '1.5rem'
+        }}>
+          Conteúdo em preparação
         </div>
-      ))}
+      )}
     </section>
   </main>
 );
