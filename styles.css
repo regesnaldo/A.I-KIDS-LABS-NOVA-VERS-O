@@ -122,19 +122,84 @@ html, body {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: space-between !important;
   margin: 0 auto !important;
   transform: none !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
   cursor: pointer !important;
   position: relative !important;
   transform-origin: center !important;
+  overflow: hidden !important;
 }
 
 .lab-card:hover {
   transform: scale(1.08) !important; /* Escala segura para listas horizontais */
   z-index: 10 !important;
   box-shadow: 0 16px 32px rgba(0,0,0,0.6) !important;
+}
+
+.card-title {
+  color: white !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin: 15px 15px 5px 15px !important;
+  padding: 0 10px !important;
+}
+
+.card-description {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  text-align: center !important;
+  margin: 0 15px 15px 15px !important;
+  padding: 0 10px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.card-actions {
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 0 15px 15px 15px !important;
+}
+
+.lab-card:hover .card-actions {
+  opacity: 1 !important;
+}
+
+.btn-play {
+  background-color: #fff !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  padding: 10px 22px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.btn-info {
+  background-color: rgba(109, 109, 110, 0.7) !important;
+  color: #fff !important;
+  padding: 10px 22px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* ROWS DE TEMPORADAS NETFLIX */
