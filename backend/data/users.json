@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1767650515201vm2wwlksl",
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "$2a$10$pQYryc.AdPqdZe3h18.5dOzVasp2AChayDIYx/5A5z2vRlz6UEUri",
+    "role": "student",
+    "profilePicture": "/images/default-avatar.png",
+    "preferences": {
+      "parentalPin": "0000",
+      "maxDailyTime": 60,
+      "maxDifficulty": "medium",
+      "allowedHours": {
+        "start": "08:00",
+        "end": "20:00"
+      }
+    },
+    "progress": {
+      "totalModules": 0,
+      "completedModules": 0,
+      "totalStars": 0,
+      "avgProgress": 0
+    },
+    "badges": [],
+    "isActive": true,
+    "lastLogin": null,
+    "createdAt": "2026-01-05T22:01:55.202Z",
+    "subscription": {
+      "status": "INACTIVE",
+      "planId": null,
+      "subscriptionId": null,
+      "startDate": null,
+      "nextBillingDate": null,
+      "endDate": null,
+      "amount": null,
+      "cancellationDate": null,
+      "cancellationReason": null,
+      "paymentMethod": null
+    }
+  }
+]
