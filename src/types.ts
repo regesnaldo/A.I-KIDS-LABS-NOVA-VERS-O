@@ -1,11 +1,15 @@
 export type PedagogicalPhase = 1 | 2 | 3 | 4 | 5;
 
 export interface Season {
-  id: string;          // UUID / CMS-friendly
-  order: number;       // ordem da temporada
-  title: string;
-  phase: PedagogicalPhase;
-  description: string;
+  id: string;          // ID seguro para CMS (ex: 'season-01')
+  order: number;       // Ordem de exibição Netflix-style
+  title: string;       // Título da Temporada
+  phase: PedagogicalPhase; // Fase pedagógica (1 a 5)
+  description: string; // Descrição lúdica para crianças e leigos
+  ageRange: string;    // Faixa etária (ex: '7+')
+  status: 'draft' | 'published' | 'archived'; // Controle de publicação
+  coverImage?: string; // Campo opcional para capa (Netflix style)
+  featured?: boolean;  // Campo para destaque (curadoria / IA)
 }
 
 export interface SeasonModule {
