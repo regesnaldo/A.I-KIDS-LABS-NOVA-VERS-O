@@ -67,3 +67,18 @@ html, body, * {
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.5) !important;
   border-color: #7c3aed !important;
 }
+
+/* ROWS DE TEMPORADAS NETFLIX */
+.season-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.season-row::-webkit-scrollbar { display: none; }
+
+.season-row > .lab-card {
+  flex: 0 0 auto;
+}
