@@ -10,7 +10,7 @@ html, body, * {
   overflow-x: hidden !important;
 }
 
-/* APLICATIVO PRINCIPAL */
+/* APP CONTAINER */
 .app {
   width: 100% !important;
   min-height: 100vh !important;
@@ -19,7 +19,20 @@ html, body, * {
   display: block !important;
 }
 
-/* GRID DEFINITIVO - COLUNAS FIXAS */
+/* TÍTULO */
+.title {
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 5rem !important;
+  font-weight: 900 !important;
+  color: #7c3aed !important;
+  text-shadow: 0 0 20px #7c3aed, 0 0 40px #7c3aed !important;
+  text-align: center !important;
+  margin-bottom: 60px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* GRID PRINCIPAL */
 .labs-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
@@ -30,7 +43,7 @@ html, body, * {
   max-width: none !important;
 }
 
-/* CARDS DEFINITIVOS - SEM ENCOLHIMENTO */
+/* CARD */
 .lab-card {
   width: 100% !important;
   min-width: 280px !important;
