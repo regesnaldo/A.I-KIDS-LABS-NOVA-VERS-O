@@ -449,4 +449,2805 @@
     "prerequisites": ["module-001", "module-006"],
     "learningObjectives": ["Entender a importância da ética em IA", "Reconhecer questões de privacidade e justiça"]
   }
+
+  {
+  "id": "module-011",
+  "title": "Módulo 11: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-011.mp4",
+  "thumbnail": "/images/module-011-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 2,
+  "seasonId": "season-03",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 11: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-011",
+      "name": "Conquistador do Módulo 11",
+      "description": "Completou o módulo 11 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-006"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-012",
+  "title": "Módulo 12: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-012.mp4",
+  "thumbnail": "/images/module-012-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 2,
+  "seasonId": "season-03",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 12: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-012",
+      "name": "Conquistador do Módulo 12",
+      "description": "Completou o módulo 12 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-007"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-013",
+  "title": "Módulo 13: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-013.mp4",
+  "thumbnail": "/images/module-013-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 2,
+  "seasonId": "season-03",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 13: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-013",
+      "name": "Conquistador do Módulo 13",
+      "description": "Completou o módulo 13 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-008"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-014",
+  "title": "Módulo 14: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-014.mp4",
+  "thumbnail": "/images/module-014-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 2,
+  "seasonId": "season-03",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 14: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-014",
+      "name": "Conquistador do Módulo 14",
+      "description": "Completou o módulo 14 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-009"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-015",
+  "title": "Módulo 15: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-015.mp4",
+  "thumbnail": "/images/module-015-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 2,
+  "seasonId": "season-03",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 15: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-015",
+      "name": "Conquistador do Módulo 15",
+      "description": "Completou o módulo 15 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-010"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-016",
+  "title": "Módulo 16: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-016.mp4",
+  "thumbnail": "/images/module-016-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "12 min",
+  "phase": 2,
+  "seasonId": "season-04",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 16: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-016",
+      "name": "Conquistador do Módulo 16",
+      "description": "Completou o módulo 16 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-011"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-017",
+  "title": "Módulo 17: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-017.mp4",
+  "thumbnail": "/images/module-017-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 2,
+  "seasonId": "season-04",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 17: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-017",
+      "name": "Conquistador do Módulo 17",
+      "description": "Completou o módulo 17 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-012"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-018",
+  "title": "Módulo 18: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-018.mp4",
+  "thumbnail": "/images/module-018-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 2,
+  "seasonId": "season-04",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 18: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-018",
+      "name": "Conquistador do Módulo 18",
+      "description": "Completou o módulo 18 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-013"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-019",
+  "title": "Módulo 19: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-019.mp4",
+  "thumbnail": "/images/module-019-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 2,
+  "seasonId": "season-04",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 19: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-019",
+      "name": "Conquistador do Módulo 19",
+      "description": "Completou o módulo 19 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-014"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-020",
+  "title": "Módulo 20: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "easy",
+  "videoPlaceholder": "/videos/module-020.mp4",
+  "thumbnail": "/images/module-020-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 2 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 2,
+  "seasonId": "season-04",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 20: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-020",
+      "name": "Conquistador do Módulo 20",
+      "description": "Completou o módulo 20 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-015"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-021",
+  "title": "Módulo 21: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-021.mp4",
+  "thumbnail": "/images/module-021-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 3,
+  "seasonId": "season-05",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 21: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-021",
+      "name": "Conquistador do Módulo 21",
+      "description": "Completou o módulo 21 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-016"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-022",
+  "title": "Módulo 22: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-022.mp4",
+  "thumbnail": "/images/module-022-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 3,
+  "seasonId": "season-05",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 22: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-022",
+      "name": "Conquistador do Módulo 22",
+      "description": "Completou o módulo 22 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-017"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-023",
+  "title": "Módulo 23: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-023.mp4",
+  "thumbnail": "/images/module-023-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 3,
+  "seasonId": "season-05",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 23: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-023",
+      "name": "Conquistador do Módulo 23",
+      "description": "Completou o módulo 23 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-018"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-024",
+  "title": "Módulo 24: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-024.mp4",
+  "thumbnail": "/images/module-024-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 3,
+  "seasonId": "season-05",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 24: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-024",
+      "name": "Conquistador do Módulo 24",
+      "description": "Completou o módulo 24 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-019"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-025",
+  "title": "Módulo 25: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-025.mp4",
+  "thumbnail": "/images/module-025-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "12 min",
+  "phase": 3,
+  "seasonId": "season-05",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 25: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-025",
+      "name": "Conquistador do Módulo 25",
+      "description": "Completou o módulo 25 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-020"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-026",
+  "title": "Módulo 26: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-026.mp4",
+  "thumbnail": "/images/module-026-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 3,
+  "seasonId": "season-06",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 26: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-026",
+      "name": "Conquistador do Módulo 26",
+      "description": "Completou o módulo 26 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-021"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-027",
+  "title": "Módulo 27: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-027.mp4",
+  "thumbnail": "/images/module-027-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 3,
+  "seasonId": "season-06",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 27: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-027",
+      "name": "Conquistador do Módulo 27",
+      "description": "Completou o módulo 27 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-022"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-028",
+  "title": "Módulo 28: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-028.mp4",
+  "thumbnail": "/images/module-028-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 3,
+  "seasonId": "season-06",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 28: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-028",
+      "name": "Conquistador do Módulo 28",
+      "description": "Completou o módulo 28 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-023"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-029",
+  "title": "Módulo 29: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-029.mp4",
+  "thumbnail": "/images/module-029-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 3,
+  "seasonId": "season-06",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 29: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-029",
+      "name": "Conquistador do Módulo 29",
+      "description": "Completou o módulo 29 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-024"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-030",
+  "title": "Módulo 30: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-030.mp4",
+  "thumbnail": "/images/module-030-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 3 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 3,
+  "seasonId": "season-06",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 30: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-030",
+      "name": "Conquistador do Módulo 30",
+      "description": "Completou o módulo 30 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-025"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-031",
+  "title": "Módulo 31: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-031.mp4",
+  "thumbnail": "/images/module-031-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 4,
+  "seasonId": "season-07",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 31: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-031",
+      "name": "Conquistador do Módulo 31",
+      "description": "Completou o módulo 31 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-026"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-032",
+  "title": "Módulo 32: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-032.mp4",
+  "thumbnail": "/images/module-032-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 4,
+  "seasonId": "season-07",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 32: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-032",
+      "name": "Conquistador do Módulo 32",
+      "description": "Completou o módulo 32 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-027"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-033",
+  "title": "Módulo 33: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-033.mp4",
+  "thumbnail": "/images/module-033-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 4,
+  "seasonId": "season-07",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 33: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-033",
+      "name": "Conquistador do Módulo 33",
+      "description": "Completou o módulo 33 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-028"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-034",
+  "title": "Módulo 34: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-034.mp4",
+  "thumbnail": "/images/module-034-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "12 min",
+  "phase": 4,
+  "seasonId": "season-07",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 34: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-034",
+      "name": "Conquistador do Módulo 34",
+      "description": "Completou o módulo 34 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-029"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-035",
+  "title": "Módulo 35: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-035.mp4",
+  "thumbnail": "/images/module-035-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 4,
+  "seasonId": "season-07",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 35: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-035",
+      "name": "Conquistador do Módulo 35",
+      "description": "Completou o módulo 35 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-030"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-036",
+  "title": "Módulo 36: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-036.mp4",
+  "thumbnail": "/images/module-036-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 4,
+  "seasonId": "season-08",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 36: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-036",
+      "name": "Conquistador do Módulo 36",
+      "description": "Completou o módulo 36 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-031"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-037",
+  "title": "Módulo 37: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-037.mp4",
+  "thumbnail": "/images/module-037-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 4,
+  "seasonId": "season-08",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 37: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-037",
+      "name": "Conquistador do Módulo 37",
+      "description": "Completou o módulo 37 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-032"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-038",
+  "title": "Módulo 38: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-038.mp4",
+  "thumbnail": "/images/module-038-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 4,
+  "seasonId": "season-08",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 38: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-038",
+      "name": "Conquistador do Módulo 38",
+      "description": "Completou o módulo 38 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-033"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-039",
+  "title": "Módulo 39: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-039.mp4",
+  "thumbnail": "/images/module-039-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "12 min",
+  "phase": 4,
+  "seasonId": "season-08",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 39: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-039",
+      "name": "Conquistador do Módulo 39",
+      "description": "Completou o módulo 39 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-034"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-040",
+  "title": "Módulo 40: Tema Educacional Avançado",
+  "ageGroup": "8-10",
+  "difficulty": "medium",
+  "videoPlaceholder": "/videos/module-040.mp4",
+  "thumbnail": "/images/module-040-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 4 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 4,
+  "seasonId": "season-08",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 40: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-040",
+      "name": "Conquistador do Módulo 40",
+      "description": "Completou o módulo 40 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-035"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-041",
+  "title": "Módulo 41: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-041.mp4",
+  "thumbnail": "/images/module-041-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 5,
+  "seasonId": "season-09",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 41: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-041",
+      "name": "Conquistador do Módulo 41",
+      "description": "Completou o módulo 41 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-036"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-042",
+  "title": "Módulo 42: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-042.mp4",
+  "thumbnail": "/images/module-042-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "11 min",
+  "phase": 5,
+  "seasonId": "season-09",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 42: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-042",
+      "name": "Conquistador do Módulo 42",
+      "description": "Completou o módulo 42 com sucesso",
+      "icon": "💎"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-037"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-043",
+  "title": "Módulo 43: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-043.mp4",
+  "thumbnail": "/images/module-043-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 5,
+  "seasonId": "season-09",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 43: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-043",
+      "name": "Conquistador do Módulo 43",
+      "description": "Completou o módulo 43 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-038"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-044",
+  "title": "Módulo 44: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-044.mp4",
+  "thumbnail": "/images/module-044-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 5,
+  "seasonId": "season-09",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 44: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-044",
+      "name": "Conquistador do Módulo 44",
+      "description": "Completou o módulo 44 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-039"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-045",
+  "title": "Módulo 45: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-045.mp4",
+  "thumbnail": "/images/module-045-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "8 min",
+  "phase": 5,
+  "seasonId": "season-09",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 45: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-045",
+      "name": "Conquistador do Módulo 45",
+      "description": "Completou o módulo 45 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-040"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-046",
+  "title": "Módulo 46: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-046.mp4",
+  "thumbnail": "/images/module-046-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 5,
+  "seasonId": "season-10",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 46: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-046",
+      "name": "Conquistador do Módulo 46",
+      "description": "Completou o módulo 46 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-041"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-047",
+  "title": "Módulo 47: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-047.mp4",
+  "thumbnail": "/images/module-047-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "12 min",
+  "phase": 5,
+  "seasonId": "season-10",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 47: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-047",
+      "name": "Conquistador do Módulo 47",
+      "description": "Completou o módulo 47 com sucesso",
+      "icon": "🎯"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-042"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-048",
+  "title": "Módulo 48: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-048.mp4",
+  "thumbnail": "/images/module-048-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 5,
+  "seasonId": "season-10",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 48: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": true
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-048",
+      "name": "Conquistador do Módulo 48",
+      "description": "Completou o módulo 48 com sucesso",
+      "icon": "🎓"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-043"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-049",
+  "title": "Módulo 49: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-049.mp4",
+  "thumbnail": "/images/module-049-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "10 min",
+  "phase": 5,
+  "seasonId": "season-10",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 49: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-049",
+      "name": "Conquistador do Módulo 49",
+      "description": "Completou o módulo 49 com sucesso",
+      "icon": "🏆"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-044"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+},
+  {
+  "id": "module-050",
+  "title": "Módulo 50: Tema Educacional Avançado",
+  "ageGroup": "11-12",
+  "difficulty": "hard",
+  "videoPlaceholder": "/videos/module-050.mp4",
+  "thumbnail": "/images/module-050-thumb.jpg",
+  "description": "Conteúdo educacional avançado para a fase 5 - Explorando conceitos de IA, robótica e programação",
+  "duration": "9 min",
+  "phase": 5,
+  "seasonId": "season-10",
+  "quiz": [
+    {
+      "question": "Pergunta do módulo 50: Qual é a importância deste conceito?",
+      "type": "multipleChoice",
+      "options": [
+        {
+          "text": "Opção A",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção B",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção C",
+          "isCorrect": false
+        },
+        {
+          "text": "Opção D",
+          "isCorrect": false
+        }
+      ],
+      "answer": "Opção B",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Este conceito é útil na prática?",
+      "type": "trueFalse",
+      "answer": true,
+      "correct": true,
+      "difficulty": "easy"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-050",
+      "name": "Conquistador do Módulo 50",
+      "description": "Completou o módulo 50 com sucesso",
+      "icon": "🌟"
+    }
+  ],
+  "skills": [
+    "Aprendizado",
+    "Raciocínio Lógico",
+    "Tecnologia"
+  ],
+  "tags": [
+    "educação",
+    "ia",
+    "tecnologia"
+  ],
+  "prerequisites": [
+    "module-045"
+  ],
+  "learningObjectives": [
+    "Aprender conceitos avançados",
+    "Aplicar conhecimentos"
+  ]
+}
 ]
