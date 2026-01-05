@@ -67,7 +67,7 @@ const missions = [
 ];
 
 const AIStudioPortal = () => (
-  <div className="main-container">
+  <div className="app">
     <div className="portal-container" style={{ width: '100%' }}>
       <h1 className="neon-header" style={{ fontSize: '5rem', fontWeight: 900 }}>A.I. KIDS LABS</h1>
       

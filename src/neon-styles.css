@@ -40,12 +40,13 @@ body {
 }
 
 /* ESTRUTURA DE ESCALA REAL - MAIN CONTAINER */
-.main-container {
+.app {
   width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 4vw !important;
+  min-height: 100vh !important;
+  padding: 32px 4vw !important; /* Espaçamento lateral sem travar a largura */
+  background: #000 !important;
   transform: none !important;
+  max-width: none !important; /* Fim do limite artificial de 1200px */
 }
 
 .portal-container {
