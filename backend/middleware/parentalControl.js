@@ -100,4 +100,4 @@ const parentalControl = async (req, res, next) => {
   }
 };
 
-module.exports = { parentalControl };
+module.exports = parentalControl;
