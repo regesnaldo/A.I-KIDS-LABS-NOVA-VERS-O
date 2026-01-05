@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const moduleController = require('../controllers/moduleController');
-const { auth } = require('../middleware/auth');
-const { parentalControl } = require('../middleware/parentalControl');
+const auth = require('../middleware/auth');
+const parentalControl = require('../middleware/parentalControl');
 
 // @route   GET /api/modules
 // @desc    Get all modules with filters
