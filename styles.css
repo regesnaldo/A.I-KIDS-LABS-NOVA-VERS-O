@@ -109,6 +109,7 @@ html, body {
   margin: 0 auto !important;
   padding: 0 !important;
   max-width: none !important;
+  overflow: visible !important;  /* PASSO 4 - Allow hover expansion */
 }
 
 /* CARD */
@@ -246,3 +247,8 @@ html, body {
 .difficulty.easy { color: #7CFC90; }
 .difficulty.medium { color: #FFD700; }
 .difficulty.hard { color: #FF7A7A; }
+
+/* PASSO 1 - TESTE ABSOLUTO DE HOVER */
+.lab-card:hover {
+  background-color: red !important;
+}
