@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream - Plataforma de Ensino Netflix Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a73e8;
+            text-shadow: 0 0 15px rgba(26, 115, 232, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #b3b3b3;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-btn, .user-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .search-btn:hover, .user-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            color: #b3b3b3;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            color: #b3b3b3;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 18px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-play {
+            background: #ffffff;
+            color: #0f0f0f;
+        }
+
+        .btn-play:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-info {
+            background: rgba(109, 109, 110, 0.7);
+            color: #ffffff;
+        }
+
+        .btn-info:hover {
+            background: rgba(129, 129, 130, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            padding: 60px 40px 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            color: #b3b3b3;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #1a73e8 transparent;
+        }
+
+        .cards-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .cards-container::-webkit-scrollbar-thumb {
+            background: #1a73e8;
+            border-radius: 3px;
+        }
+
+        /* COURSE CARDS */
+        .course-card {
+            min-width: 320px;
+            height: 420px;
+            background: #141414;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a73e8, #e50914);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .card-subtitle {
+            color: #b3b3b3;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-duration {
+            color: #b3b3b3;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .course-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .overlay-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .overlay-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .overlay-btn-play {
+            background: #ffffff;
+            color: #0f0f0f;
+        }
+
+        .overlay-btn-play:hover {
+            background: #f0f0f0;
+        }
+
+        .overlay-btn-info {
+            background: rgba(109, 109, 110, 0.7);
+            color: #ffffff;
+        }
+
+        .overlay-btn-info:hover {
+            background: rgba(129, 129, 130, 0.9);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #0f0f0f;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 80px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #b3b3b3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #b3b3b3;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #1a73e8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .hero {
+                height: 70vh;
+                padding: 0 20px;
+                margin-top: 70px;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                padding: 15px;
+                justify-content: center;
+            }
+            
+            .content-section {
+                padding: 40px 20px 20px;
+            }
+            
+            .course-card {
+                min-width: 280px;
+            }
+            
+            .footer {
+                padding: 30px 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .course-card {
+                min-width: 250px;
+                height: 380px;
+            }
+            
+            .card-image {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">EduStream</div>
+        <nav class="nav-menu">
+            <a href="#">Início</a>
+            <a href="#">Cursos</a>
+            <a href="#">Meu Aprendizado</a>
+            <a href="#">Perfis</a>
+        </nav>
+        <div class="user-actions">
+            <button class="search-btn">🔍</button>
+            <button class="user-btn">👤</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Novo módulo disponível</div>
+            <h1 class="hero-title">Python para Data Science</h1>
+            <p class="hero-description">Aprenda análise de dados, visualização e fundamentos de machine learning usando Python. Ideal para iniciantes que desejam entrar no mundo da ciência de dados.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-play">
+                    <span>▶️</span> Começar Curso
+                </a>
+                <a href="#" class="btn btn-info">
+                    <span>ℹ️</span> Ver Ementa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTIONS -->
+    <section class="content-section">
+        <h2 class="section-title">Recomendado para você</h2>
+        <p class="section-subtitle">Porque você concluiu 'Introdução ao Python'</p>
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="course-card">
+                <div class="card-image">Python Avançado</div>
+                <div class="card-content">
+                    <h3 class="card-title">Python Avançado</h3>
+                    <p class="card-subtitle">Nível Intermediário</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 8h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="course-card">
+                <div class="card-image">Data Science Fundamentals</div>
+                <div class="card-content">
+                    <h3 class="card-title">Data Science Fundamentals</h3>
+                    <p class="card-subtitle">Nível Básico</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 10h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="course-card">
+                <div class="card-image">Machine Learning</div>
+                <div class="card-content">
+                    <h3 class="card-title">Machine Learning</h3>
+                    <p class="card-subtitle">Nível Avançado</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 12h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="course-card">
+                <div class="card-image">Visualização de Dados</div>
+                <div class="card-content">
+                    <h3 class="card-title">Visualização de Dados</h3>
+                    <p class="card-subtitle">Nível Intermediário</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 6h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="course-card">
+                <div class="card-image">SQL para Análise</div>
+                <div class="card-content">
+                    <h3 class="card-title">SQL para Análise</h3>
+                    <p class="card-subtitle">Nível Básico</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 5h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Cursos Populares</h2>
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="course-card">
+                <div class="card-image">Introdução à IA</div>
+                <div class="card-content">
+                    <h3 class="card-title">Introdução à Inteligência Artificial</h3>
+                    <p class="card-subtitle">Nível Básico</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 7h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="course-card">
+                <div class="card-image">Web Development</div>
+                <div class="card-content">
+                    <h3 class="card-title">Desenvolvimento Web Completo</h3>
+                    <p class="card-subtitle">Nível Intermediário</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 15h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="course-card">
+                <div class="card-image">Cybersecurity</div>
+                <div class="card-content">
+                    <h3 class="card-title">Fundamentos de Cibersegurança</h3>
+                    <p class="card-subtitle">Nível Avançado</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 9h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="course-card">
+                <div class="card-image">Mobile Development</div>
+                <div class="card-content">
+                    <h3 class="card-title">Desenvolvimento Mobile</h3>
+                    <p class="card-subtitle">Nível Intermediário</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 11h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="course-card">
+                <div class="card-image">Cloud Computing</div>
+                <div class="card-content">
+                    <h3 class="card-title">Computação em Nuvem</h3>
+                    <p class="card-subtitle">Nível Avançado</p>
+                    <div class="card-meta">
+                        <span class="card-duration">⏱️ 10h</span>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <div class="overlay-buttons">
+                        <button class="overlay-btn overlay-btn-play">
+                            <span>▶️</span> Assistir
+                        </button>
+                        <button class="overlay-btn overlay-btn-info">
+                            <span>ℹ️</span> Mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>EduStream</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Perguntas Frequentes</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#">Programação</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Marketing</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Tutoriais</a></li>
+                    <li><a href="#">Certificados</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Siga-nos</h3>
+                <div class="social-links">
+                    <a href="#">📘 Facebook</a>
+                    <a href="#">🐦 Twitter</a>
+                    <a href="#">📷 Instagram</a>
+                    <a href="#">💼 LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EduStream. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
