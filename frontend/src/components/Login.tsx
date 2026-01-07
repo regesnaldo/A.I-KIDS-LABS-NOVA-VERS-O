@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// @ts-ignore
 import { authAPI } from '../services/api';
 
 interface LoginProps {
