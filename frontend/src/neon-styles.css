@@ -1,6 +1,6 @@
 :root {
-  --primary: #00ff00;
-  --secondary: #00ccff;
+  --primary: #E50914; /* Netflix Red */
+  --secondary: #00ccff; /* Neon Blue */
   --bg: #141414;
   --card-bg: #1f1f1f;
   --text: #ffffff;
@@ -14,22 +14,36 @@ body {
   padding: 0;
 }
 
+/* Scrollbar Style */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
 .lab-card {
   position: relative;
-  width: 200px;
-  height: 300px;
+  width: 200px; /* Base width */
+  min-width: 200px;
+  height: 300px; /* Vertical Card */
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 
 .lab-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-  border-color: var(--primary);
+  transform: scale(1.1); /* Hover Scale 1.1 */
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.5); /* Neon Shadow */
+  border-color: var(--primary); /* Neon Border */
   z-index: 10;
 }
 
@@ -39,9 +53,13 @@ body {
   left: 0;
   right: 0;
   padding: 10px;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .lab-card:hover .card-overlay {
@@ -49,36 +67,69 @@ body {
 }
 
 .card-title-overlay {
-  font-size: 1rem;
-  margin: 0;
-  color: var(--primary);
+  font-size: 0.9rem;
+  margin: 0 0 8px 0;
+  color: white;
+  font-weight: bold;
 }
 
 .card-actions {
   display: flex;
   gap: 10px;
-  margin-top: 5px;
+  margin-bottom: 8px;
 }
 
 .btn-play {
-  background: var(--primary);
+  background: white;
+  color: black;
   border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-weight: bold;
   cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.btn-play:hover {
+  background: rgba(255,255,255,0.8);
+}
+
+.btn-like {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  cursor: pointer;
 }
+.btn-like:hover {
+  border-color: white;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.difficulty.easy { color: #46d369; }
+.difficulty.medium { color: #ffae00; }
+.difficulty.hard { color: #f44336; }
 
 .season-row {
-  margin-bottom: 30px;
+  /* Scroll Snap behavior if needed */
+  scroll-behavior: smooth;
 }
 
-.season-title {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--secondary);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.navbar.scrolled {
+  background-color: #141414;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
