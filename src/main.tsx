@@ -4,6 +4,7 @@ import './neon-styles.css'
 import RecommendationEngine from './components/RecommendationEngine';
 import ChatAssistant from './components/ChatAssistant';
 
+console.log(import.meta.env.VITE_API_URL);
 // Tipos para as fases pedagógicas
 type PedagogicalPhase = 1 | 2 | 3 | 4 | 5;
 
