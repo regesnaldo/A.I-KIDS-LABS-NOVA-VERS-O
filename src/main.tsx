@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './neon-styles.css'
 import RecommendationEngine from './components/RecommendationEngine';
 import ChatAssistant from './components/ChatAssistant';
+import VideoPlayer from './components/VideoPlayer';
 
 console.log(import.meta.env.VITE_API_URL);
 // Tipos para as fases pedagógicas
@@ -131,7 +132,7 @@ const getMissionModules = (seasonId: string): MissionModule[] => {
 };
 
 // Componente de Card de Laboratório
-const LabCard = ({ module, level }: { module: MissionModule; level?: 'kids' | 'teens' | 'adults' }) => {
+const LabCard = ({ module, level, onPlay }: { module: MissionModule; level?: 'kids' | 'teens' | 'adults'; onPlay: (m: MissionModule) => void }) => {
   // Verificar se o conteúdo deve ser bloqueado por controle parental
   const isParentalLocked = module.difficulty === 'hard' && module.state !== 'completed';
   
@@ -151,7 +152,7 @@ const LabCard = ({ module, level }: { module: MissionModule; level?: 'kids' | 't
       
       <div className="card-overlay">
         <div className="card-actions">
-          <button className="btn-play">▶ Assistir</button>
+          <button className="btn-play" onClick={() => onPlay(module)}>▶ Assistir</button>
           <button className="btn-like">ℹ️ Mais Informações</button>
         </div>
         
@@ -168,7 +169,7 @@ const LabCard = ({ module, level }: { module: MissionModule; level?: 'kids' | 't
 };
 
 // Componente de Linha de Temporada
-const SeasonRow = ({ season }: { season: Season }) => {
+const SeasonRow = ({ season, onPlay }: { season: Season; onPlay: (m: MissionModule) => void }) => {
   const modules = getMissionModules(season.id);
   
   // Determine UX Level based on age range
@@ -186,7 +187,7 @@ const SeasonRow = ({ season }: { season: Season }) => {
       <h2 className="season-title" style={{ marginLeft: '4%', marginBottom: '10px', fontSize: '1.4vw', color: '#e5e5e5' }}>{season.title}</h2>
       <div className="season-row" style={{ paddingLeft: '4%' }}>
         {modules.map(module => (
-          <LabCard key={module.id} module={module} level={level} />
+          <LabCard key={module.id} module={module} level={level} onPlay={onPlay} />
         ))}
       </div>
     </section>
@@ -247,6 +248,8 @@ const HeroSection = () => {
 
 // Componente Principal do App
 const App = () => {
+  const [playingModule, setPlayingModule] = React.useState<MissionModule | null>(null);
+
   // Filtrar apenas temporadas publicadas
   const publishedSeasons = seasons.filter(season => season.status === 'published');
   
@@ -258,6 +261,10 @@ const App = () => {
     acc[season.phase].push(season);
     return acc;
   }, {} as Record<PedagogicalPhase, Season[]>);
+
+  const handlePlay = (module: MissionModule) => {
+    setPlayingModule(module);
+  };
 
   return (
     <div className="app" style={{ backgroundColor: '#141414', minHeight: '100vh', color: 'white' }}>
@@ -274,12 +281,31 @@ const App = () => {
              {/* Removido título da fase para ficar mais limpo estilo Netflix, ou manter discreto */}
             <div className="labs-grid">
               {seasonList.map(season => (
-                <SeasonRow key={season.id} season={season} />
+                <SeasonRow key={season.id} season={season} onPlay={handlePlay} />
               ))}
             </div>
           </div>
         ))}
       </main>
+
+      {playingModule && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+            <button 
+                onClick={() => setPlayingModule(null)} 
+                style={{ position: 'absolute', top: 30, right: 30, fontSize: '2.5rem', color: 'white', background: 'none', border: 'none', cursor: 'pointer', zIndex: 1001 }}
+            >
+                ×
+            </button>
+            <div style={{ width: '100%', maxWidth: '1200px' }}>
+                <VideoPlayer 
+                    videoUrl="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
+                    title={playingModule.title}
+                    onProgressUpdate={() => {}}
+                    onVideoComplete={() => {}}
+                />
+            </div>
+        </div>
+      )}
     </div>
   );
 };

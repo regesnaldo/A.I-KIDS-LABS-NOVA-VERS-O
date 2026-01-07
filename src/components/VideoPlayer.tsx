@@ -1,152 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 interface VideoPlayerProps {
   videoUrl: string;
   thumbnailUrl?: string;
-  initialTime?: number; // Resume capability
+  initialTime?: number;
   onProgressUpdate: (progress: number, currentTime: number) => void;
   onVideoComplete: () => void;
   title: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
-  videoUrl: _videoUrl, 
+  videoUrl, 
   thumbnailUrl, 
   initialTime = 0,
   onProgressUpdate, 
   onVideoComplete,
   title 
 }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(initialTime);
-  const [showPlaceholder, setShowPlaceholder] = useState(true);
-  
-  // Initialize with resume time if provided
+  const [duration, setDuration] = useState(0);
+
   useEffect(() => {
-    if (initialTime > 0) {
-       setCurrentTime(initialTime);
-       const newProgress = (initialTime / 300) * 100;
-       setProgress(Math.min(newProgress, 100));
+    if (videoRef.current && initialTime > 0) {
+        videoRef.current.currentTime = initialTime;
     }
   }, [initialTime]);
 
-  // Simulate video loading and playback
-  useEffect(() => {
-    // Simulate loading time
-    const loadTimer = setTimeout(() => {
-      setShowPlaceholder(false);
-    }, 1500);
-
-    let progressInterval: ReturnType<typeof setInterval> | null = null;
-    
-    if (isPlaying) {
-      progressInterval = setInterval(() => {
-        setCurrentTime(prev => {
-          const newTime = prev + 1;
-          const newProgress = (newTime / 300) * 100; // Assuming 5 min video for demo
-          
-          setProgress(Math.min(newProgress, 100));
-          onProgressUpdate(Math.min(newProgress, 100), newTime);
-          
-          if (newTime >= 300) { // 5 minutes in seconds
-            if (progressInterval) clearInterval(progressInterval);
-            onVideoComplete();
-            setIsPlaying(false);
-            return 300;
-          }
-          
-          return newTime;
-        });
-      }, 1000); // Update every second
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
     }
-
-    return () => {
-      clearTimeout(loadTimer);
-      if (progressInterval) clearInterval(progressInterval);
-    };
-  }, [isPlaying, onProgressUpdate, onVideoComplete]);
-
-  const handlePlay = () => {
-    setIsPlaying(true);
   };
 
-  const handlePause = () => {
-    setIsPlaying(false);
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      const total = videoRef.current.duration || 1;
+      const progress = (current / total) * 100;
+      
+      setCurrentTime(current);
+      onProgressUpdate(progress, current);
+      
+      if (current >= total && total > 0) {
+          onVideoComplete();
+          setIsPlaying(false);
+      }
+    }
   };
 
-  const handleReset = () => {
-    setCurrentTime(0);
-    setProgress(0);
-    setIsPlaying(false);
-    onProgressUpdate(0, 0);
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
   };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
-    <div className="video-player-container">
-      <div className="video-player-wrapper">
-        {showPlaceholder ? (
-          <div className="video-placeholder">
-            <div className="loading-spinner">
-              <div className="spinner"></div>
-              <p>Carregando vídeo...</p>
-            </div>
-          </div>
-        ) : (
-          <div className="actual-video-content">
-            <div className="video-display">
-              <div className="placeholder-video">
-                <div className="video-thumbnail" style={{ backgroundImage: `url(${thumbnailUrl})` }}>
-                  <div className="play-overlay">
-                    <div className="play-button" onClick={isPlaying ? handlePause : handlePlay}>
-                      {isPlaying ? '⏸️' : '▶️'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="video-controls">
-                <div className="progress-container">
-                  <div 
-                    className="progress-bar"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-                <div className="time-info">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(300)}</span>
-                </div>
-              </div>
-              
-              <div className="control-buttons">
-                <button 
-                  className="play-pause-btn" 
-                  onClick={isPlaying ? handlePause : handlePlay}
-                >
-                  {isPlaying ? '⏸️ Pausar' : '▶️ Assistir'}
-                </button>
-                <button className="reset-btn" onClick={handleReset}>
-                  ↺ Reiniciar
-                </button>
-              </div>
-            </div>
-            
-            <div className="video-info">
-              <h3>{title}</h3>
-              <p>Este é um vídeo educativo sobre o tema abordado no módulo.</p>
-              <div className="video-stats">
-                <span>🎯 Progresso: {Math.round(progress)}%</span>
-                <span>⏱️ Tempo: {formatTime(currentTime)}/05:00</span>
-              </div>
-            </div>
-          </div>
-        )}
+    <div className="video-player-container" style={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto', backgroundColor: '#000', borderRadius: '8px', overflow: 'hidden' }}>
+      <video
+        ref={videoRef}
+        src={videoUrl}
+        poster={thumbnailUrl}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+        onClick={togglePlay}
+        style={{ width: '100%', display: 'block' }}
+      />
+      
+      {/* Play Overlay */}
+      {!isPlaying && (
+        <div 
+          onClick={togglePlay}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            cursor: 'pointer'
+          }}
+        >
+          <div style={{ fontSize: '4rem', color: 'white', opacity: 0.8 }}>▶</div>
+        </div>
+      )}
+
+      {/* Controls */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)',
+        padding: '10px 20px',
+        display: 'flex', alignItems: 'center', gap: '15px',
+        opacity: isPlaying ? 0 : 1,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+      onMouseLeave={(e) => isPlaying && (e.currentTarget.style.opacity = '0')}
+      >
+        <button onClick={togglePlay} style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer' }}>
+          {isPlaying ? '⏸' : '▶'}
+        </button>
+        
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <span style={{ color: '#ddd', fontSize: '0.8rem', marginBottom: '5px' }}>{title}</span>
+            <input 
+            type="range" 
+            min="0" 
+            max={duration || 100} 
+            value={currentTime}
+            onChange={(e) => {
+                const time = Number(e.target.value);
+                if (videoRef.current) videoRef.current.currentTime = time;
+                setCurrentTime(time);
+            }}
+            style={{ width: '100%', cursor: 'pointer' }}
+            />
+        </div>
+        
+        <span style={{ color: 'white', fontSize: '0.9rem', minWidth: '80px', textAlign: 'right' }}>
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
       </div>
     </div>
   );
