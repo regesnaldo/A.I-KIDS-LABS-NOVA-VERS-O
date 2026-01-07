@@ -1,6 +1,7 @@
 // API Service for A.I. Kids Labs
 // Automatically detects environment via Vite
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+const API_BASE_URL = `${BASE_URL}/api`;
 
 // Authentication API
 export const authAPI = {
