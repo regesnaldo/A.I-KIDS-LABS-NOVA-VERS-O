@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom';
 import './neon-styles.css'
-import RecommendationEngine from './components/RecommendationEngine';
+import Navbar from './components/Navbar';
+import Recommendations from './components/Recommendations';
 import ChatAssistant from './components/ChatAssistant';
 import VideoPlayer from './components/VideoPlayer';
 import Login from './components/Login';
@@ -100,11 +102,12 @@ const App = () => {
 
   return (
     <div className="app" style={{ backgroundColor: '#141414', minHeight: '100vh', color: 'white', overflowX: 'hidden' }}>
+      <Navbar />
       <HeroSection />
       
       <main className="main-content" style={{ position: 'relative', zIndex: 10 }}>
         <div style={{ padding: '0 4%', marginBottom: '2rem' }}>
-          <RecommendationEngine />
+          <Recommendations />
         </div>
         <ChatAssistant />
         
@@ -151,6 +154,8 @@ const App = () => {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 )
