@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SeasonRow = () => {
   return (
     <div className='-placeholder'>
