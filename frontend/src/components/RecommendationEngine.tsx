@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// @ts-ignore
 import { modulesAPI } from '../services/api';
 
 interface Recommendation {

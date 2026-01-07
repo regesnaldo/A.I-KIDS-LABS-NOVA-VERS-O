@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// @ts-ignore
 import { chatAPI } from '../services/api';
 
 interface Message {

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { authAPI } from '../services/api';
 
 interface LoginProps {
   onLogin: (user: any) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login = ({ onLogin }: LoginProps) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     

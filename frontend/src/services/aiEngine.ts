@@ -1,4 +1,4 @@
-import { AIContext, Mission, CompletedMission } from '../types';
+import { AIContext, Mission } from '../types';
 
 export function recommendNextMission(
   context: AIContext,
@@ -48,11 +48,11 @@ export function generateParentReport(
   const totalCompleted = completedMissions.length;
   
   // Determine strengths based on difficulty completion
-  const difficultyCounts = {
-    easy: 0,
-    medium: 0,
-    hard: 0
-  };
+  // const difficultyCounts = {
+  //   easy: 0,
+  //   medium: 0,
+  //   hard: 0
+  // };
   
   let totalScore = 0;
   let totalAttempts = 0;
