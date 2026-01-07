@@ -19,7 +19,7 @@ interface QuizProps {
   onCancel: () => void;
 }
 
-const Quiz: React.FC<QuizProps> = ({ moduleId, title, questions, onSubmit, onCancel }) => {
+const Quiz: React.FC<QuizProps> = ({ title, questions, onSubmit, onCancel }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<string[]>(Array(questions.length).fill(''));
   const [showResults, setShowResults] = useState(false);
@@ -50,7 +50,7 @@ const Quiz: React.FC<QuizProps> = ({ moduleId, title, questions, onSubmit, onCan
     const newGradedAnswers = questions.map((question, index) => {
       const userAnswer = answers[index];
       const correctOption = question.options.find(opt => opt.isCorrect);
-      const isCorrect = correctOption && correctOption.text === userAnswer;
+      const isCorrect = !!(correctOption && correctOption.text === userAnswer);
       
       if (isCorrect) correctCount++;
       

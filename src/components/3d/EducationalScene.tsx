@@ -233,7 +233,7 @@ const EducationalScene3D = ({
         padding: '20px'
       }}>
         {/* Render rockets for modules */}
-        {modules.map((module, index) => (
+        {modules.map((module) => (
           <FloatingRocket
             key={module.id}
             onClick={() => onModuleClick && onModuleClick(module.id)}
@@ -242,7 +242,7 @@ const EducationalScene3D = ({
         ))}
         
         {/* Render badges for completed modules */}
-        {modules.filter(m => m.completed).map((module, index) => (
+        {modules.filter(m => m.completed).map((module) => (
           <RotatingBadge
             key={`badge-${module.id}`}
             icon="🏆"

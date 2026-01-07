@@ -9,6 +9,36 @@ const getModulesFromJson = () => {
   return JSON.parse(modulesData);
 };
 
+// Helper: Get AI Persona Message
+const getPersonaMessage = (age, context) => {
+  let ageGroup = 'adult';
+  if (age >= 7 && age <= 10) ageGroup = 'child';
+  else if (age >= 11 && age <= 16) ageGroup = 'youth';
+
+  const messages = {
+    child: {
+      continue: "Olá explorador! Vamos continuar nossa aventura?",
+      reinforce: "Vamos rever isso com calma para você ficar craque!",
+      challenge: "Uau! Você é incrível! Que tal um desafio especial?",
+      starter: "Bem-vindo! Vamos começar nossa jornada espacial?"
+    },
+    youth: {
+      continue: "Bem-vindo de volta. Pronto para o próximo nível?",
+      reinforce: "Detectamos uma dificuldade. Que tal reforçar a base?",
+      challenge: "Desempenho excelente. Desbloqueando desafio avançado.",
+      starter: "Iniciando sistema. Escolha sua primeira missão."
+    },
+    adult: {
+      continue: "Olá. Vamos retomar seu progresso?",
+      reinforce: "Sugiro revisar este conceito para consolidar o aprendizado.",
+      challenge: "Excelente domínio. Recomendamos avançar para tópicos complexos.",
+      starter: "Bem-vindo. Comece pelos fundamentos da IA."
+    }
+  };
+
+  return messages[ageGroup][context] || messages['adult'][context];
+};
+
 // @desc    Get all modules with filters
 // @route   GET /api/modules
 // @access  Public
@@ -76,28 +106,45 @@ const getModuleById = async (req, res) => {
   }
 };
 
-// @desc    Update module progress
+// @desc    Update module progress (Netflix-style Resume)
 // @route   POST /api/modules/:id/progress
 // @access  Private
 const updateProgress = async (req, res) => {
   try {
-    const { progress, starsEarned, badgesEarned, isCompleted } = req.body;
+    const { progress, starsEarned, badgesEarned, isCompleted, stoppedAt } = req.body;
     const userId = req.user.id;
     const moduleId = req.params.id;
     
     // Get the user
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({
-        success: false,
-        error: 'User not found'
-      });
+      return res.status(404).json({ success: false, error: 'User not found' });
     }
     
-    // In a real app, you would update progress in the database
-    // For now, we'll just return success
+    // Find existing progress for this module
+    const historyIndex = user.progress.history.findIndex(h => h.moduleId === moduleId);
+    
+    if (historyIndex > -1) {
+      // Update existing
+      user.progress.history[historyIndex].lastWatched = new Date();
+      if (stoppedAt !== undefined) user.progress.history[historyIndex].stoppedAt = stoppedAt;
+      if (isCompleted) user.progress.history[historyIndex].completed = true;
+      if (starsEarned) user.progress.history[historyIndex].stars = Math.max(user.progress.history[historyIndex].stars, starsEarned);
+    } else {
+      // Add new
+      user.progress.history.push({
+        moduleId,
+        stoppedAt: stoppedAt || 0,
+        completed: isCompleted || false,
+        lastWatched: new Date(),
+        stars: starsEarned || 0
+      });
+    }
+
+    // Update global stats
     if (isCompleted) {
-      user.progress.completedModules += 1;
+       // Recalculate totals based on history to ensure accuracy
+       user.progress.completedModules = user.progress.history.filter(h => h.completed).length;
     }
     
     if (starsEarned) {
@@ -111,30 +158,117 @@ const updateProgress = async (req, res) => {
       }))];
     }
     
-    // Calculate average progress
-    if (user.progress.totalModules > 0) {
-      user.progress.avgProgress = Math.round(
-        (user.progress.completedModules / user.progress.totalModules) * 100
-      );
-    }
-    
     await user.save();
     
     res.json({
       success: true,
       data: {
-        progress,
-        starsEarned,
-        badgesEarned,
+        moduleId,
+        stoppedAt,
         isCompleted
       }
     });
   } catch (error) {
     console.error('Error in updateProgress:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Server Error'
-    });
+    res.status(500).json({ success: false, error: 'Server Error' });
+  }
+};
+
+// @desc    Get AI Recommendations
+// @route   GET /api/modules/recommendations
+// @access  Private
+const getRecommendations = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    const modules = getModulesFromJson();
+
+    // 1. Find last watched module
+    const lastWatched = user.progress.history.sort((a, b) => b.lastWatched - a.lastWatched)[0];
+
+    let recommendations = [];
+    const userAge = user.age || 10; // Default to child if not set
+
+    if (lastWatched) {
+      // Recommendation Logic 1: Continue watching (if not finished)
+      if (!lastWatched.completed && lastWatched.stoppedAt > 0) {
+         const currentModule = modules.find(m => m.id === lastWatched.moduleId);
+         if (currentModule) {
+            recommendations.push({
+               type: 'continue_watching',
+               reason: 'Continue de onde parou',
+               aiMessage: getPersonaMessage(userAge, 'continue'),
+               module: currentModule,
+               stoppedAt: lastWatched.stoppedAt
+            });
+         }
+      }
+
+      // Recommendation Logic 2: Adaptive Path based on Performance
+      const currentModule = modules.find(m => m.id === lastWatched.moduleId);
+      
+      if (currentModule) {
+         let nextModule = null;
+         let context = 'continue';
+
+         // Performance Logic
+         if (lastWatched.stars <= 1 && lastWatched.completed) {
+            // Difficulty detected: Recommend easier or reinforcement
+            context = 'reinforce';
+            nextModule = modules.find(m => 
+               m.phase === currentModule.phase && 
+               m.difficulty === 'easy' && 
+               m.id !== currentModule.id &&
+               !user.progress.history.some(h => h.moduleId === m.id)
+            );
+         } else if (lastWatched.stars === 3 && lastWatched.completed) {
+            // High performance: Recommend challenge or next phase
+            context = 'challenge';
+            nextModule = modules.find(m => 
+               (m.phase === currentModule.phase + 1) || 
+               (m.phase === currentModule.phase && m.difficulty === 'hard' && !user.progress.history.some(h => h.moduleId === m.id))
+            );
+         }
+
+         // Fallback to standard sequence if no specific adaptation found
+         if (!nextModule) {
+            nextModule = modules.find(m => 
+               m.phase === currentModule.phase && 
+               m.id !== currentModule.id && 
+               !user.progress.history.some(h => h.moduleId === m.id)
+            );
+            // Try next phase if current phase finished
+            if (!nextModule) {
+               nextModule = modules.find(m => m.phase === currentModule.phase + 1);
+            }
+         }
+
+         if (nextModule) {
+            recommendations.push({
+               type: 'next_up',
+               reason: 'Próximo da sua jornada',
+               aiMessage: getPersonaMessage(userAge, context),
+               module: nextModule
+            });
+         }
+      }
+    }
+
+    // Recommendation Logic 3: Popular / New (Fallback for new users)
+    if (recommendations.length === 0) {
+       const starterModule = modules.find(m => m.phase === 1);
+       recommendations.push({
+          type: 'starter',
+          reason: 'Comece por aqui',
+          aiMessage: getPersonaMessage(userAge, 'starter'),
+          module: starterModule
+       });
+    }
+
+    res.json({ success: true, data: recommendations });
+  } catch (error) {
+    console.error('Error in recommendations:', error);
+    res.status(500).json({ success: false, error: 'Server Error' });
   }
 };
 
@@ -371,5 +505,6 @@ module.exports = {
   getQuiz,
   getBadges,
   getModulesForUser,
-  getUserProgress
+  getUserProgress,
+  getRecommendations // Exporting this explicitly though it was implicit in logic
 };

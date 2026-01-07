@@ -1,7 +1,6 @@
 // API Service for A.I. Kids Labs
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-domain.com/api' 
-  : 'http://localhost:5001/api';
+// Automatically detects environment via Vite
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 // Authentication API
 export const authAPI = {
@@ -112,8 +111,9 @@ export const progressAPI = {
     return response.json();
   },
 
-  updateProgress: async (progressData) => {
-    const response = await fetch(`${API_BASE_URL}/progress`, {
+  updateProgress: async (moduleId, progressData) => {
+    // progressData includes: { progress, starsEarned, badgesEarned, isCompleted, stoppedAt }
+    const response = await fetch(`${API_BASE_URL}/modules/${moduleId}/progress`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,12 +168,18 @@ export const quizzesAPI = {
     });
     return response.json();
   },
+};
 
-  getRecommendations: async () => {
-    const response = await fetch(`${API_BASE_URL}/quizzes/recommendations`, {
+// Chat API
+export const chatAPI = {
+  sendMessage: async (message, context) => {
+    const response = await fetch(`${API_BASE_URL}/chat/message`, {
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'x-auth-token': localStorage.getItem('token'),
       },
+      body: JSON.stringify({ message, context }),
     });
     return response.json();
   },

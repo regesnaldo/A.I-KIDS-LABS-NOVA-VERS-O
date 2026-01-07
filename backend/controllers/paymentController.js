@@ -51,7 +51,7 @@ const createSubscriptionPlan = async (req, res) => {
           trialPeriodDuration: planDetails.trialPeriodDays
         },
         redirectURL: `${process.env.FRONTEND_URL || 'http://localhost:3000'}/payment/success`,
-        notificationURL: `${process.env.BACKEND_URL || 'http://localhost:5000'}/api/payments/webhook`
+        notificationURL: `${process.env.BACKEND_URL || 'http://localhost:5001'}/api/payments/webhook`
       },
       {
         headers: {

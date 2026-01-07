@@ -67,7 +67,15 @@ const userSchema = new mongoose.Schema({
     totalModules: { type: Number, default: 0 },
     completedModules: { type: Number, default: 0 },
     totalStars: { type: Number, default: 0 },
-    avgProgress: { type: Number, default: 0 }
+    avgProgress: { type: Number, default: 0 },
+    // Netflix-style Resume Capability
+    history: [{
+      moduleId: String,
+      stoppedAt: { type: Number, default: 0 }, // Timestamp in seconds
+      completed: { type: Boolean, default: false },
+      lastWatched: { type: Date, default: Date.now },
+      stars: { type: Number, default: 0 }
+    }]
   },
   badges: [{
     badgeId: String,

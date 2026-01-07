@@ -15,7 +15,7 @@ interface ParentDashboardProps {
   parentId: string;
 }
 
-const ParentDashboard: React.FC<ParentDashboardProps> = ({ parentId }) => {
+const ParentDashboard: React.FC<ParentDashboardProps> = ({ parentId: _parentId }) => {
   const [children, setChildren] = useState<ChildProgress[]>([]);
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);

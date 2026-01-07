@@ -3,29 +3,38 @@ import React, { useState, useEffect } from 'react';
 interface VideoPlayerProps {
   videoUrl: string;
   thumbnailUrl?: string;
-  onProgressUpdate: (progress: number) => void;
+  initialTime?: number; // Resume capability
+  onProgressUpdate: (progress: number, currentTime: number) => void;
   onVideoComplete: () => void;
   title: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
-  videoUrl, 
+  videoUrl: _videoUrl, 
   thumbnailUrl, 
+  initialTime = 0,
   onProgressUpdate, 
   onVideoComplete,
   title 
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(initialTime);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   
+  // Initialize with resume time if provided
+  useEffect(() => {
+    if (initialTime > 0) {
+       setCurrentTime(initialTime);
+       const newProgress = (initialTime / 300) * 100;
+       setProgress(Math.min(newProgress, 100));
+    }
+  }, [initialTime]);
+
   // Simulate video loading and playback
   useEffect(() => {
     // Simulate loading time
     const loadTimer = setTimeout(() => {
-      setVideoLoaded(true);
       setShowPlaceholder(false);
     }, 1500);
 
@@ -38,7 +47,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           const newProgress = (newTime / 300) * 100; // Assuming 5 min video for demo
           
           setProgress(Math.min(newProgress, 100));
-          onProgressUpdate(Math.min(newProgress, 100));
+          onProgressUpdate(Math.min(newProgress, 100), newTime);
           
           if (newTime >= 300) { // 5 minutes in seconds
             if (progressInterval) clearInterval(progressInterval);
@@ -56,7 +65,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       clearTimeout(loadTimer);
       if (progressInterval) clearInterval(progressInterval);
     };
-  }, [isPlaying]);
+  }, [isPlaying, onProgressUpdate, onVideoComplete]);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -70,7 +79,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setCurrentTime(0);
     setProgress(0);
     setIsPlaying(false);
-    onProgressUpdate(0);
+    onProgressUpdate(0, 0);
   };
 
   const formatTime = (seconds: number) => {

@@ -18,16 +18,16 @@ interface ModuleData {
   isCompleted: boolean;
   videoWatched: boolean;
   starsEarned: number;
+  stoppedAt?: number;
 }
 
 interface ModuleProps {
   module: ModuleData;
-  userId: string;
+  userId?: string;
   onProgressUpdate: (moduleId: string, progress: number, isCompleted: boolean) => void;
 }
 
-const Module: React.FC<ModuleProps> = ({ module, userId, onProgressUpdate }) => {
-  const [showQuiz, setShowQuiz] = useState(false);
+const Module: React.FC<ModuleProps> = ({ module, onProgressUpdate }) => {
   const [videoProgress, setVideoProgress] = useState(module.progress);
   const [videoWatched, setVideoWatched] = useState(module.videoWatched);
   const [starsEarned, setStarsEarned] = useState(module.starsEarned);
@@ -60,7 +60,7 @@ const Module: React.FC<ModuleProps> = ({ module, userId, onProgressUpdate }) => 
     onProgressUpdate(module.id, 100, false);
   };
 
-  const handleQuizSubmit = async (answers: string[], score: number) => {
+  const handleQuizSubmit = async (_answers: string[], score: number) => {
     // Calculate stars based on score
     let newStarsEarned = 0;
     if (score >= 90) newStarsEarned = 3;
@@ -76,12 +76,10 @@ const Module: React.FC<ModuleProps> = ({ module, userId, onProgressUpdate }) => 
   };
 
   const handleStartQuiz = () => {
-    setShowQuiz(true);
     setCurrentView('quiz');
   };
 
   const handleCancelQuiz = () => {
-    setShowQuiz(false);
     setCurrentView('video');
   };
 
@@ -107,6 +105,7 @@ const Module: React.FC<ModuleProps> = ({ module, userId, onProgressUpdate }) => 
               videoUrl={module.videoUrl}
               thumbnailUrl={module.thumbnailUrl}
               title={module.title}
+              initialTime={module.stoppedAt} // Pass the resume time
               onProgressUpdate={handleVideoProgress}
               onVideoComplete={handleVideoComplete}
             />

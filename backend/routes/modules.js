@@ -44,4 +44,9 @@ router.get('/user/:userId', auth, moduleController.getModulesForUser);
 // @access  Private
 router.get('/progress/:userId', auth, moduleController.getUserProgress);
 
+// @route   GET /api/modules/recommendations
+// @desc    Get smart recommendations (AI)
+// @access  Private
+router.get('/recommendations', auth, moduleController.getRecommendations);
+
 module.exports = router;

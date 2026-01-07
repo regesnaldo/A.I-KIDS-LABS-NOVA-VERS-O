@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import '../neon-styles.css'
 import './neon-styles.css'
+import RecommendationEngine from './components/RecommendationEngine';
+import ChatAssistant from './components/ChatAssistant';
 
 // Tipos para as fases pedagógicas
 type PedagogicalPhase = 1 | 2 | 3 | 4 | 5;
@@ -129,12 +130,15 @@ const getMissionModules = (seasonId: string): MissionModule[] => {
 };
 
 // Componente de Card de Laboratório
-const LabCard = ({ module }: { module: MissionModule }) => {
+const LabCard = ({ module, level }: { module: MissionModule; level?: 'kids' | 'teens' | 'adults' }) => {
   // Verificar se o conteúdo deve ser bloqueado por controle parental
   const isParentalLocked = module.difficulty === 'hard' && module.state !== 'completed';
   
+  // Default to 'kids' if not provided
+  const cardLevel = level || 'kids';
+  
   return (
-    <article className={`lab-card ${module.state} ${isParentalLocked ? 'parental-locked' : ''}`} 
+    <article className={`lab-card ${module.state} card-${cardLevel} ${isParentalLocked ? 'parental-locked' : ''}`} 
              tabIndex={0}
              onKeyDown={(e) => {
                if (e.key === 'Enter' || e.key === ' ') {
@@ -166,16 +170,77 @@ const LabCard = ({ module }: { module: MissionModule }) => {
 const SeasonRow = ({ season }: { season: Season }) => {
   const modules = getMissionModules(season.id);
   
+  // Determine UX Level based on age range
+  let level: 'kids' | 'teens' | 'adults' = 'kids';
+  if (season.ageRange === '6+' || season.ageRange === '7+' || season.ageRange === '8+') {
+    level = 'kids';
+  } else if (season.ageRange === '9+' || season.ageRange === '12+') {
+    level = 'teens';
+  } else {
+    level = 'adults';
+  }
+  
   return (
-    <section className="season-container">
-      <h2 className="season-title">{season.title}</h2>
-      <p className="season-description">{season.description}</p>
-      <div className="season-row">
+    <section className="season-container" style={{ position: 'relative', zIndex: 5, marginTop: '-50px', paddingBottom: '40px' }}>
+      <h2 className="season-title" style={{ marginLeft: '4%', marginBottom: '10px', fontSize: '1.4vw', color: '#e5e5e5' }}>{season.title}</h2>
+      <div className="season-row" style={{ paddingLeft: '4%' }}>
         {modules.map(module => (
-          <LabCard key={module.id} module={module} />
+          <LabCard key={module.id} module={module} level={level} />
         ))}
       </div>
     </section>
+  );
+};
+
+// Componente Hero Section (Capa Estilo Netflix)
+const HeroSection = () => {
+  return (
+    <>
+      {/* Navbar Overlay */}
+      <nav className="navbar">
+        <div className="nav-logo" style={{ color: '#00ffff', textShadow: '0 0 10px rgba(0,255,255,0.7)' }}>A.I. KIDS LABS</div>
+        <ul className="nav-menu">
+          <li><a href="#" className="nav-link active">Início</a></li>
+          <li><a href="#" className="nav-link">Séries</a></li>
+          <li><a href="#" className="nav-link">Filmes</a></li>
+          <li><a href="#" className="nav-link">Bombando</a></li>
+          <li><a href="#" className="nav-link">Minha lista</a></li>
+        </ul>
+        <div className="nav-right">
+          <span>🔍</span>
+          <span>🔔</span>
+          <div style={{ width: '30px', height: '30px', background: '#333', borderRadius: '4px' }}></div>
+        </div>
+      </nav>
+
+      {/* Hero Content */}
+      <header className="hero-section">
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <h1 className="hero-title">A.I. KIDS LABS</h1>
+          
+          <div className="hero-badge">
+            <div className="top-10-badge">
+              TOP <span>1</span>
+            </div>
+            <span>em Educação Tecnológica hoje</span>
+          </div>
+          
+          <p className="hero-description">
+            Paul Bettany interpreta um padre determinado a resgatar sua sobrinha... Ops! Aqui você é o herói que domina a Inteligência Artificial para criar o futuro.
+          </p>
+          
+          <div className="hero-buttons">
+            <button className="btn-hero play">
+              <span>▶</span> Assistir
+            </button>
+            <button className="btn-hero info">
+              <span>ℹ️</span> Mais informações
+            </button>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
@@ -194,16 +259,18 @@ const App = () => {
   }, {} as Record<PedagogicalPhase, Season[]>);
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1 className="title">A.I. KIDS LABS</h1>
-        <p className="subtitle">Laboratório de Aprendizado Interativo</p>
-      </header>
+    <div className="app" style={{ backgroundColor: '#141414', minHeight: '100vh', color: 'white' }}>
+      <HeroSection />
       
-      <main className="main-content">
+      <main className="main-content" style={{ position: 'relative', zIndex: 10 }}>
+        <div style={{ padding: '0 4%', marginBottom: '2rem' }}>
+          <RecommendationEngine />
+        </div>
+        <ChatAssistant />
+        
         {Object.entries(seasonsByPhase).map(([phase, seasonList]) => (
           <div key={phase} className="phase-section">
-            <h2 className="phase-title">Fase Pedagógica {phase}</h2>
+             {/* Removido título da fase para ficar mais limpo estilo Netflix, ou manter discreto */}
             <div className="labs-grid">
               {seasonList.map(season => (
                 <SeasonRow key={season.id} season={season} />

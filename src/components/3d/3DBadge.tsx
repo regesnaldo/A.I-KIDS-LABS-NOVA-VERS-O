@@ -169,7 +169,7 @@ const Badge3D: React.FC<Badge3DProps> = ({
         }}></div>
       )}
       
-      <style jsx>{`
+      <style>{`
         @keyframes pulse {
           0% { box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.6); }
           50% { box-shadow: 0 0 40px 15px rgba(16, 185, 129, 0.8); }
