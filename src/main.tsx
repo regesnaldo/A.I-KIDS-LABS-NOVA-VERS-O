@@ -4,6 +4,8 @@ import './neon-styles.css'
 import RecommendationEngine from './components/RecommendationEngine';
 import ChatAssistant from './components/ChatAssistant';
 import VideoPlayer from './components/VideoPlayer';
+import Login from './components/Login';
+import { modulesAPI } from './services/api';
 
 console.log('API URL:', import.meta.env.VITE_API_URL);
 
@@ -37,107 +39,6 @@ interface MissionModule {
   category: string;
 }
 
-// Dados das temporadas
-const seasons: Season[] = [
-  {
-    id: 'season-001',
-    order: 1,
-    title: 'Temporada 01: Lógica Básica',
-    phase: 1,
-    description: 'Introdução à lógica de programação para crianças.',
-    ageRange: '6+',
-    status: 'published',
-    coverImage: '/assets/modules/season-001.jpg',
-    featured: true
-  },
-  {
-    id: 'season-002',
-    order: 2,
-    title: 'Temporada 02: Matemática Divertida',
-    phase: 1,
-    description: 'Conceitos básicos de matemática.',
-    ageRange: '6+',
-    status: 'published',
-    coverImage: '/assets/modules/season-002.jpg',
-    featured: false
-  },
-  {
-    id: 'season-003',
-    order: 3,
-    title: 'Temporada 03: Raciocínio Lógico',
-    phase: 2,
-    description: 'Lógica e raciocínio para resolver problemas.',
-    ageRange: '7+',
-    status: 'published',
-    coverImage: '/assets/modules/season-003.jpg',
-    featured: false
-  },
-  {
-    id: 'season-004',
-    order: 4,
-    title: 'Temporada 04: Formas e Cores',
-    phase: 2,
-    description: 'Geometria e reconhecimento de padrões.',
-    ageRange: '7+',
-    status: 'published',
-    coverImage: '/assets/modules/season-004.jpg',
-    featured: false
-  },
-  {
-    id: 'season-005',
-    order: 5,
-    title: 'Temporada 05: Álgebra Inicial',
-    phase: 3,
-    description: 'Introdução a variáveis e equações simples.',
-    ageRange: '8+',
-    status: 'published',
-    coverImage: '/assets/modules/season-005.jpg',
-    featured: false
-  }
-];
-
-// Gerar temporadas 6-50 programaticamente
-for (let i = 5; i < 49; i++) {
-  const seasonIndex = i + 1;
-  const phaseValue = Math.floor((seasonIndex - 1) / 10) + 1;
-  const validPhase = Math.min(Math.max(phaseValue, 1), 5) as PedagogicalPhase;
-  
-  seasons.push({
-    id: `season-${String(seasonIndex).padStart(3, '0')}`,
-    order: seasonIndex,
-    title: `Temporada ${seasonIndex.toString().padStart(2, '0')}`,
-    phase: validPhase,
-    description: `Conteúdo educativo avançado ${seasonIndex.toString().padStart(2, '0')}`,
-    ageRange: seasonIndex > 30 ? '12+' : '9+',
-    status: 'published',
-    coverImage: `/assets/modules/season-${String(seasonIndex).padStart(3, '0')}.jpg`,
-    featured: false
-  });
-}
-
-// Módulos de exemplo para cada temporada
-const getMissionModules = (seasonId: string): MissionModule[] => {
-  const modules: MissionModule[] = [];
-  const seasonNumber = parseInt(seasonId.replace('season-', ''));
-  
-  for (let i = 1; i <= 5; i++) {
-    modules.push({
-      id: `${seasonId}-module-${i}`,
-      title: `Missão ${i}: Desafio`,
-      description: `Conteúdo educativo da ${seasonId} - Missão ${i}`,
-      duration: '10 min',
-      difficulty: i <= 2 ? 'easy' : i <= 4 ? 'medium' : 'hard',
-      seasonId,
-      state: seasonNumber <= 2 || i <= 3 ? 'available' : 'locked',
-      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      thumbnailUrl: `/assets/modules/${seasonId}-module-${i}.jpg`,
-      category: 'Lógica'
-    });
-  }
-  
-  return modules;
-};
-
 // Componente de Card de Laboratório (Netflix Style)
 const LabCard = ({ module, level, onPlay }: { module: MissionModule; level?: 'kids' | 'teens' | 'adults'; onPlay: (m: MissionModule) => void }) => {
   const [imgError, setImgError] = useState(false);
@@ -157,7 +58,7 @@ const LabCard = ({ module, level, onPlay }: { module: MissionModule; level?: 'ki
       
       {!imgError && (
         <img 
-          src={module.thumbnailUrl} 
+          src={module.thumbnailUrl || `/assets/modules/${module.seasonId}.jpg`} 
           alt={module.title}
           onError={() => setImgError(true)}
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px', zIndex: -1 }}
@@ -186,9 +87,7 @@ const LabCard = ({ module, level, onPlay }: { module: MissionModule; level?: 'ki
 };
 
 // Componente de Linha de Temporada
-const SeasonRow = ({ season, onPlay }: { season: Season; onPlay: (m: MissionModule) => void }) => {
-  const modules = getMissionModules(season.id);
-  
+const SeasonRow = ({ season, modules, onPlay }: { season: Season; modules: MissionModule[]; onPlay: (m: MissionModule) => void }) => {
   // Determine UX Level based on age range
   let level: 'kids' | 'teens' | 'adults' = 'kids';
   if (season.ageRange === '6+' || season.ageRange === '7+' || season.ageRange === '8+') {
@@ -240,23 +139,89 @@ const HeroSection = () => {
 
 // Componente Principal do App
 const App = () => {
+  const [user, setUser] = useState<any>(null);
   const [playingModule, setPlayingModule] = React.useState<MissionModule | null>(null);
+  const [seasons, setSeasons] = useState<Season[]>([]);
+  const [allModules, setAllModules] = useState<MissionModule[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Filtrar apenas temporadas publicadas
-  const publishedSeasons = seasons.filter(season => season.status === 'published');
-  
-  // Agrupar temporadas por fase pedagógica
-  const seasonsByPhase = publishedSeasons.reduce((acc, season) => {
-    if (!acc[season.phase]) {
-      acc[season.phase] = [];
+  // Load User from LocalStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    if (storedUser && token) {
+      setUser(JSON.parse(storedUser));
+    } else {
+        setLoading(false);
     }
-    acc[season.phase].push(season);
-    return acc;
-  }, {} as Record<PedagogicalPhase, Season[]>);
+  }, []);
+
+  // Fetch Data (Only if logged in)
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!user) {
+          return;
+      }
+      
+      try {
+        const response = await modulesAPI.getAllModules();
+        if (response.success && response.data) {
+          const fetchedModules: MissionModule[] = response.data.map((m: any) => ({
+             ...m,
+             videoUrl: m.videoPlaceholder || m.videoUrl, // Adapt backend field to frontend interface
+             thumbnailUrl: m.thumbnail,
+             seasonId: m.seasonId || 'season-01'
+          }));
+          
+          setAllModules(fetchedModules);
+          
+          const uniqueSeasons = Array.from(new Set(fetchedModules.map(m => m.seasonId)));
+          const generatedSeasons: Season[] = uniqueSeasons.map((sid, index) => ({
+             id: sid,
+             order: index + 1,
+             title: `Temporada ${sid.replace('season-', '')}`,
+             phase: 1, // Simplify for now
+             description: 'Conteúdo da Temporada',
+             ageRange: '6+',
+             status: 'published',
+             coverImage: `/assets/modules/${sid}.jpg`
+          }));
+          
+          setSeasons(generatedSeasons.length > 0 ? generatedSeasons : [
+              { id: 'season-01', order: 1, title: 'Temporada 01', phase: 1, description: '', ageRange: '6+', status: 'published' }
+          ]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch data", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [user]);
 
   const handlePlay = (module: MissionModule) => {
     setPlayingModule(module);
   };
+  
+  const handleLogin = (userData: any) => {
+      setUser(userData);
+      setLoading(true); // Trigger loading to fetch data
+  };
+
+  if (!user) {
+      return <Login onLogin={handleLogin} />;
+  }
+
+  if (loading && allModules.length === 0) {
+      return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#000', color: '#0f0' }}>LOADING SYSTEM...</div>;
+  }
+
+  // Agrupar temporadas por fase pedagógica (Simulada aqui, pois backend não retorna fase na temporada ainda)
+  const seasonsByPhase = {
+      1: seasons
+  } as Record<PedagogicalPhase, Season[]>;
 
   return (
     <div className="app" style={{ backgroundColor: '#141414', minHeight: '100vh', color: 'white', overflowX: 'hidden' }}>
@@ -271,9 +236,11 @@ const App = () => {
         {Object.entries(seasonsByPhase).map(([phase, seasonList]) => (
           <div key={phase} className="phase-section">
             <div className="labs-grid">
-              {seasonList.map(season => (
-                <SeasonRow key={season.id} season={season} onPlay={handlePlay} />
-              ))}
+              {seasonList.map(season => {
+                const seasonModules = allModules.filter(m => m.seasonId === season.id);
+                if (seasonModules.length === 0) return null;
+                return <SeasonRow key={season.id} season={season} modules={seasonModules} onPlay={handlePlay} />;
+              })}
             </div>
           </div>
         ))}

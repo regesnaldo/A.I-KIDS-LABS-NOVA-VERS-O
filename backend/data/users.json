@@ -76,5 +76,44 @@
       "cancellationReason": null,
       "paymentMethod": null
     }
+  },
+  {
+    "id": "176780537953834fg0zuvj",
+    "email": "reginaldodealmeida@gmail.com",
+    "password": "$2a$10$/.xuh3zqIUJNsLz2Q4.lXeZF7ypCNetogP7cSGOaP0iihT1dSZq7C",
+    "role": "student",
+    "age": 10,
+    "profilePicture": "/images/default-avatar.png",
+    "preferences": {
+      "parentalPin": "0000",
+      "maxDailyTime": 60,
+      "maxDifficulty": "medium",
+      "allowedHours": {
+        "start": "08:00",
+        "end": "20:00"
+      }
+    },
+    "progress": {
+      "totalModules": 0,
+      "completedModules": 0,
+      "totalStars": 0,
+      "avgProgress": 0
+    },
+    "badges": [],
+    "isActive": true,
+    "lastLogin": null,
+    "createdAt": "2026-01-07T17:02:59.538Z",
+    "subscription": {
+      "status": "INACTIVE",
+      "planId": null,
+      "subscriptionId": null,
+      "startDate": null,
+      "nextBillingDate": null,
+      "endDate": null,
+      "amount": null,
+      "cancellationDate": null,
+      "cancellationReason": null,
+      "paymentMethod": null
+    }
   }
 ]
