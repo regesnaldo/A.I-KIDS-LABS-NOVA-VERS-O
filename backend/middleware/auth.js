@@ -1,45 +1,34 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
-// @desc    Protect routes
-const auth = async (req, res, next) => {
-  let token;
-  
-  // Check for token in headers
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    try {
-      // Get token from header
-      token = req.headers.authorization.split(' ')[1];
-      
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'defaultSecretKey');
-      
-      // Get user from token
-      req.user = await User.findById(decoded.userId).select('-password');
-      
-      if (!req.user) {
-        return res.status(401).json({
-          success: false,
-          error: 'Token is not valid'
-        });
-      }
-      
-      next();
-    } catch (error) {
-      console.error(error);
-      return res.status(401).json({
-        success: false,
-        error: 'Token is not valid'
-      });
+// Middleware de Autenticação
+// Protege rotas sensíveis verificando o token JWT no header 'Authorization'
+const auth = (req, res, next) => {
+    // 1. Obtém o token do header
+    const authHeader = req.header('Authorization');
+
+    // Verifica se o token existe
+    if (!authHeader) {
+        return res.status(401).json({ msg: 'Acesso negado. Token não fornecido.' });
     }
-  }
-  
-  if (!token) {
-    return res.status(401).json({
-      success: false,
-      error: 'No token, authorization denied'
-    });
-  }
+
+    // O formato esperado é "Bearer <token>"
+    const token = authHeader.replace('Bearer ', '');
+
+    try {
+        // 2. Verifica a validade do token usando a chave secreta
+        // Em produção, use process.env.JWT_SECRET
+        const secret = process.env.JWT_SECRET || 'sua_chave_secreta_super_segura_para_dev_ai_kids_labs_2024';
+        const decoded = jwt.verify(token, secret);
+
+        // 3. Adiciona o usuário decodificado ao objeto da requisição
+        // Isso permite que as rotas acessem req.user.id
+        req.user = decoded.user;
+        
+        next(); // Passa para o próximo middleware ou rota
+    } catch (err) {
+        console.error('Erro na validação do token:', err.message);
+        res.status(401).json({ msg: 'Token inválido ou expirado.' });
+    }
 };
 
 module.exports = auth;

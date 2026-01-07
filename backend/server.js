@@ -1,76 +1,73 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const morgan = require('morgan');
 const path = require('path');
-const fs = require('fs');
-require('dotenv').config();
+const dotenv = require('dotenv');
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-  console.error('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-  console.error(err.name, err.message);
-  console.error(err.stack);
-  // Keep server running in development for better DX, or exit(1) in production
-});
+// Carrega variáveis de ambiente
+dotenv.config();
 
-// Handle unhandled rejections
-process.on('unhandledRejection', (err) => {
-  console.error('UNHANDLED REJECTION! 💥');
-  console.error(err.name, err.message);
-});
+// Inicializa configurações do banco
+const db = require('./config/db');
+const User = require('./models/user');
+const Video = require('./models/video');
+const History = require('./models/history');
+const Recommendation = require('./models/recommendation');
+
+// Importa Rotas
+const userRoutes = require('./routes/users');
+const videoRoutes = require('./routes/videos');
+const historyRoutes = require('./routes/history');
+const recommendationRoutes = require('./routes/recommendations');
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'],
-  credentials: true
-}));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('combined'));
+app.use(cors()); // Habilita CORS para todas as origens (ajustar em produção)
+app.use(express.json({ extended: false })); // Parsing de JSON no body
 
-// Import routes
-const moduleRoutes = require('./routes/modules');
-const userRoutes = require('./routes/users');
-const authRoutes = require('./routes/auth');
-const paymentRoutes = require('./routes/payments');
-const chatRoutes = require('./routes/chat');
+// Logging de requisições (Middleware simples)
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+});
 
-// Routes
-app.use('/api/modules', moduleRoutes);
+// Rotas da API
 app.use('/api/users', userRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/payments', paymentRoutes);
-app.use('/api/chat', chatRoutes);
+app.use('/api/videos', videoRoutes);
+app.use('/api/history', historyRoutes);
+app.use('/api/recommendations', recommendationRoutes);
 
-// Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-// Connect to MongoDB (or use JSON file for development)
-const useMongoDB = process.env.USE_MONGODB === 'true';
-if (useMongoDB) {
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-kids-labs', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB connection error:', err));
-} else {
-  console.log('Using JSON file for data storage (development mode)');
-}
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+// Endpoint de Status (Health Check)
+app.get('/api/status', (req, res) => {
+    res.json({ 
+        status: 'online', 
+        uptime: process.uptime(),
+        environment: process.env.NODE_ENV || 'development',
+        timestamp: new Date()
+    });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`A.I. KIDS LABS server running on port ${PORT}`);
-  console.log(`Environment: ${useMongoDB ? 'MongoDB' : 'JSON file (development)'}`);
-});
+// Inicialização do Banco de Dados (Cria tabelas se não existirem)
+const initDB = async () => {
+    try {
+        await User.init();
+        await Video.init();
+        await History.init();
+        await Recommendation.init();
+        console.log('✅ Banco de dados inicializado com sucesso.');
+    } catch (err) {
+        console.error('❌ Erro ao inicializar banco de dados:', err);
+    }
+};
 
-module.exports = app;
+// Inicia o Servidor
+app.listen(PORT, async () => {
+    await initDB();
+    console.log(`
+    🚀 Servidor rodando na porta ${PORT}
+    🌐 Ambiente: ${process.env.NODE_ENV || 'development'}
+    📂 Banco de Dados: SQLite
+    👉 Health Check: http://localhost:${PORT}/api/status
+    `);
+});
