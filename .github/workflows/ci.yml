@@ -1,0 +1,43 @@
+name: CI Quality & Coverage
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ dev ]
+
+jobs:
+  quality-gate:
+    name: ci/quality-gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        working-directory: ./frontend
+        run: npm ci
+      - name: Lint (Type Check)
+        working-directory: ./frontend
+        run: npm run lint
+      - name: Build
+        working-directory: ./frontend
+        run: npm run build
+
+  coverage:
+    name: codecov/project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        working-directory: ./frontend
+        run: npm ci
+      - name: Run Tests with Coverage
+        working-directory: ./frontend
+        run: npm run test:coverage
