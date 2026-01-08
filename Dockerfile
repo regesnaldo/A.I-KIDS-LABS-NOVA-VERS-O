@@ -3,11 +3,11 @@ FROM node:20-alpine as build
 WORKDIR /app
 
 # Copy package files from frontend directory
-COPY frontend/package*.json ./
+COPY front-end/package*.json ./
 RUN npm ci
 
 # Copy the rest of the frontend source code
-COPY frontend/ .
+COPY front-end/ .
 
 # Build the application
 RUN npm run build
