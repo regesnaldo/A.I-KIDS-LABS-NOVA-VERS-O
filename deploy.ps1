@@ -19,9 +19,12 @@ try {
     }
 } catch {
     Write-Host "[ERROR] Localhost is not accessible. Please start the dev server first." -ForegroundColor Red
-    Write-Host "Run: npm run dev" -ForegroundColor Cyan
+    Write-Host "Run: cd front-end && npm run dev" -ForegroundColor Cyan
     exit 1
 }
+
+# Change directory to front-end
+Set-Location "front-end"
 
 # Build for production
 Write-Host "`r`n[2/4] Building for production..." -ForegroundColor Yellow
