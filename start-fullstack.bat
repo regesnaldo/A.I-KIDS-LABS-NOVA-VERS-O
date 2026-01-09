@@ -7,7 +7,7 @@ echo [1/2] Starting Backend Server (Port 5001)...
 start "AI-KIDS-BACKEND" cmd /k "cd backend && npm install && npm start"
 
 echo [2/2] Starting Frontend (Vite)...
-start "AI-KIDS-FRONTEND" cmd /k "npm run dev"
+start "AI-KIDS-FRONTEND" cmd /k "cd front-end && npm run dev"
 
 echo.
 echo ===================================================

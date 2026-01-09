@@ -1,0 +1,32 @@
+# Título do PR
+feat: Release v1.0 - Netflix Neon UI & Enterprise CI Compliance
+
+# Descrição do PR
+
+## 🚀 Resumo da Mudança
+Este PR implementa a nova interface "Netflix Neon" e finaliza a conformidade do pipeline de CI/CD para padrões enterprise.
+
+## ✨ Principais Alterações
+- **UI/UX**: Implementação completa do layout Netflix Neon com animações e responsividade.
+- **Refatoração**: Padronização da estrutura de pastas (`frontend` → `front-end`).
+- **CI/CD**:
+  - Atualização dos workflows para usar o novo caminho `front-end`.
+  - Configuração de Quality Gate rigoroso (Lint sem warnings, Testes >= 80%).
+  - Segurança: Remoção de tokens do `CODEOWNERS` e exclusão de `node_modules` do git.
+- **Correções**:
+  - Resolução de erros de TypeScript no build.
+  - Ajuste nos scripts de deploy e inicialização (`start-fullstack.bat`).
+
+## 🧪 Plano de Teste
+1. Checkout na branch `dev`.
+2. Execute `npm install` na pasta `front-end`.
+3. Rode `npm run build` para validar a compilação.
+4. Rode `npm test` para validar a cobertura (>80%).
+5. Inicie a aplicação e verifique o visual Neon.
+
+## ✅ Checklist
+- [x] Build passando sem erros
+- [x] Testes unitários passando
+- [x] Lint verificado
+- [x] Sem tokens expostos
+- [x] Estrutura de pastas corrigida
