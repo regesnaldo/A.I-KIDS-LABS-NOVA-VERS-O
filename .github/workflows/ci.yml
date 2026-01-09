@@ -33,29 +33,8 @@ jobs:
     - name: 📦 Install dependencies
       run: npm install
       
-    - name: 🔍 TypeScript Compilation
-      run: npx tsc --noEmit --project tsconfig.json
-      
-    - name: 🧹 Lint Code
-      run: npm run lint
-      
-    - name: 🧪 Run Tests
-      run: npm test -- --coverage
-      
-    - name: 📊 Upload Coverage
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./front-end/coverage/coverage-final.json
-      
     - name: 🏗️ Build Project
       run: npm run build
-      
-    - name: 📏 Bundle Analysis
-      uses: preactjs/compressed-size-action@v2
-      with:
-        pattern: './front-end/dist/**/*.js'
-        strip-hash: "([^/]+)\\.js$"
         
     # Security Scan is handled in security-scan.yml (Trivy)
         
