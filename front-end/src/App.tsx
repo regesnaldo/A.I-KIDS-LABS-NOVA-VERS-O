@@ -1,41 +1,119 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './neon-styles.css'
 import Navbar from './components/Navbar';
 import Recommendations from './components/Recommendations';
 import ChatAssistant from './components/ChatAssistant';
 import VideoPlayer from './components/VideoPlayer';
 import Login from './components/Login';
-import SeasonRow from './components/SeasonRow';
+import SeasonCard from './components/SeasonCard';
 import HeroSection from './components/HeroSection';
-import { modulesAPI, waitForBackend, onConnectionChange } from './services/api';
-import { Season, MissionModule, PedagogicalPhase } from './types';
+import api, { waitForBackend, onConnectionChange } from './services/api';
+import { MissionModule } from './types';
+
+// --- Page Components ---
+
+const LandingPage = () => (
+  <>
+    <HeroSection />
+    <div style={{ padding: '0 4%', marginBottom: '2rem' }}>
+      <Recommendations />
+    </div>
+  </>
+);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MissoesPage = ({ temporadasData }: { temporadasData: any[] }) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.warn("Acesso não autorizado detectado em Missões.");
+    } else {
+      console.log("Credencial de acesso validada para Missões. Token presente.");
+    }
+  }, []);
+
+  return (
+    <section style={{ padding: '2rem 4%' }}>
+      <h2 className="text-gradient" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Jornadas A.I. KIDS</h2>
+      <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+          gap: '2rem',
+          padding: '1rem 0' 
+      }}>
+        {temporadasData.map((season) => (
+          <SeasonCard 
+            key={season.id}
+            title={season.title || season.titulo}
+            description={season.description || season.descricao}
+            image={season.image}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const AboutPage = () => (
+    <div style={{ padding: '100px 4%', color: 'white', maxWidth: '800px', margin: '0 auto' }}>
+        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '2rem' }}>Sobre o A.I. KIDS LABS</h1>
+        <div style={{ background: 'rgba(20, 20, 20, 0.8)', padding: '2rem', borderRadius: '15px', border: '1px solid #333' }}>
+            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc' }}>
+                O <strong>A.I. KIDS LABS</strong> é uma iniciativa revolucionária para desmontar as barreiras do aprendizado tecnológico.
+            </p>
+            <br />
+            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc' }}>
+                Nossa missão é transformar o aprendizado de Inteligência Artificial e Programação em uma aventura épica, onde cada linha de código é um superpoder e cada bug resolvido é uma vitória gloriosa.
+            </p>
+            <br />
+            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc' }}>
+                Prepare-se para embarcar em missões que desafiam sua lógica e expandem sua criatividade. O futuro é agora, e você é o piloto.
+            </p>
+        </div>
+    </div>
+);
+
+const LabsPage = () => (
+    <div style={{ padding: '100px 4%', color: 'white', textAlign: 'center', height: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Labs</h1>
+        <p style={{ fontSize: '1.5rem', color: '#888' }}>Laboratórios de experimentação prática em construção...</p>
+        <div style={{ marginTop: '2rem', fontSize: '3rem' }}>🧪 🧬 🔬</div>
+    </div>
+);
+
+const ConquistasPage = () => (
+    <div style={{ padding: '100px 4%', color: 'white', textAlign: 'center', height: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Conquistas</h1>
+        <p style={{ fontSize: '1.5rem', color: '#888' }}>Suas medalhas e troféus aparecerão aqui.</p>
+        <div style={{ marginTop: '2rem', fontSize: '3rem' }}>🏆 🥇 🎖️</div>
+    </div>
+);
 
 const App = () => {
   const [user, setUser] = useState<unknown>(null);
   const [playingModule, setPlayingModule] = React.useState<MissionModule | null>(null);
-  const [seasons, setSeasons] = useState<Season[]>([]);
-  const [allModules, setAllModules] = useState<MissionModule[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [temporadasData, setTemporadasData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   // Connection States: 'checking' (initial), 'online', 'reconnecting', 'offline'
   const [connectionStatus, setConnectionStatus] = useState<'checking' | 'online' | 'reconnecting' | 'offline'>('checking');
 
   // Monitor Connection
   useEffect(() => {
-    // 1. Subscribe to connection changes from API interceptors
     const unsubscribe = onConnectionChange((status) => {
       setConnectionStatus(status);
       if (status === 'offline') {
-        // Auto-retry connection when we go offline
         waitForBackend().then(success => {
             if (!success) setConnectionStatus('offline');
         });
       }
     });
 
-    // 2. Initial Check
     const checkServer = async () => {
-      const isReady = await waitForBackend(5, 1000); // Quick check on load
+      const isReady = await waitForBackend(5, 1000);
       if (isReady) {
         setConnectionStatus('online');
       } else {
@@ -54,7 +132,7 @@ const App = () => {
     if (storedUser && token) {
       setUser(JSON.parse(storedUser));
     } else {
-        setLoading(false);
+        setLoading(false); // Stop loading if no user, allowing Landing Page to show
     }
   }, []);
 
@@ -66,33 +144,9 @@ const App = () => {
       }
       
       try {
-        const response = await modulesAPI.getAllModules();
-        if (response.success && response.data) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const fetchedModules: MissionModule[] = response.data.map((m: any) => ({
-             ...m,
-             videoUrl: m.videoPlaceholder || m.videoUrl, // Adapt backend field to frontend interface
-             thumbnailUrl: m.thumbnail,
-             seasonId: m.seasonId || 'season-01'
-          }));
-          
-          setAllModules(fetchedModules);
-          
-          const uniqueSeasons = Array.from(new Set(fetchedModules.map(m => m.seasonId)));
-          const generatedSeasons: Season[] = uniqueSeasons.map((sid, index) => ({
-             id: sid,
-             order: index + 1,
-             title: `Temporada ${sid.replace('season-', '')}`,
-             phase: 1, // Simplify for now
-             description: 'Conteúdo da Temporada',
-             ageRange: '6+',
-             status: 'published',
-             coverImage: `/assets/modules/${sid}.jpg`
-          }));
-          
-          setSeasons(generatedSeasons.length > 0 ? generatedSeasons : [
-              { id: 'season-01', order: 1, title: 'Temporada 01', phase: 1, description: '', ageRange: '6+', status: 'published' }
-          ]);
+        const response = await api.get('/seasons');
+        if (response.data) {
+          setTemporadasData(response.data);
         }
       } catch (error) {
         console.error("Failed to fetch data", error);
@@ -104,14 +158,10 @@ const App = () => {
     fetchData();
   }, [user]);
 
-  const handlePlay = (module: MissionModule) => {
-    setPlayingModule(module);
-  };
-  
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleLogin = (userData: any) => {
       setUser(userData);
-      setLoading(true); // Trigger loading to fetch data
+      setLoading(true); 
   };
 
   // --- CONNECTION SCREENS ---
@@ -159,58 +209,44 @@ const App = () => {
       );
   }
 
-  if (!user) {
-      return <Login onLogin={handleLogin} />;
-  }
+  // Remove early return for !user to allow Landing Page
+  // if (!user) return <Login onLogin={handleLogin} />;
 
-  if (loading && allModules.length === 0) {
+  if (loading && user && temporadasData.length === 0) {
       return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#000', color: '#0f0' }}>LOADING SYSTEM...</div>;
   }
 
-  // Agrupar temporadas por fase pedagógica (Simulada aqui, pois backend não retorna fase na temporada ainda)
-  const seasonsByPhase = {
-      1: seasons
-  } as Record<PedagogicalPhase, Season[]>;
-
   return (
     <div className="app" style={{ backgroundColor: '#141414', minHeight: '100vh', color: 'white', overflowX: 'hidden' }}>
-      <Navbar />
-      <HeroSection />
-      
-      <main className="main-content" style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{ padding: '0 4%', marginBottom: '2rem' }}>
-          <Recommendations />
-        </div>
-        <ChatAssistant />
+    <Navbar onOpenChat={() => setIsChatOpen(true)} />
+    
+    <main className="main-content" style={{ position: 'relative', zIndex: 10 }}>
+        <ChatAssistant isOpen={isChatOpen} onToggle={setIsChatOpen} />
         
-        <section style={{ padding: '2rem 4%' }}>
-          <h2 className="text-gradient" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Jornadas A.I. Kids</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {temporadasData.map((season) => (
-              <SeasonCard 
-                key={season.id}
-                title={season.title}
-                description={season.description}
-                image={season.image}
-              />
-            ))}
-          </div>
-        </section>
-        
-        {Object.entries(seasonsByPhase).map(([phase, seasonList]) => (
-          <div key={phase} className="phase-section">
-            <div className="labs-grid">
-              {seasonList.map(season => {
-                const seasonModules = allModules.filter(m => m.seasonId === season.id);
-                if (seasonModules.length === 0) return null;
-                return <SeasonRow key={season.id} season={season} modules={seasonModules} onPlay={handlePlay} />;
-              })}
-            </div>
-          </div>
-        ))}
-      </main>
+        <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            
+            {/* Protected Routes */}
+            <Route 
+                path="/missoes" 
+                element={user ? <MissoesPage temporadasData={temporadasData} /> : <Login onLogin={handleLogin} />} 
+            />
+            <Route 
+                path="/labs" 
+                element={user ? <LabsPage /> : <Login onLogin={handleLogin} />} 
+            />
+            <Route 
+                path="/conquistas" 
+                element={user ? <ConquistasPage /> : <Login onLogin={handleLogin} />} 
+            />
+            
+            {/* Fallback to Landing */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+    </main>
 
-      {playingModule && (
+    {playingModule && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
             <button 
                 onClick={() => setPlayingModule(null)} 
@@ -227,13 +263,13 @@ const App = () => {
                     onVideoComplete={() => {}}
                 />
                 <div style={{ marginTop: '20px', color: '#ccc', textAlign: 'left', maxWidth: '800px', margin: '20px auto' }}>
-                   <h2 style={{ fontSize: '2rem', marginBottom: '10px' }}>{playingModule.title}</h2>
-                   <p style={{ fontSize: '1.2rem', marginBottom: '10px' }}>{playingModule.description}</p>
-                   <span style={{ background: '#333', padding: '4px 12px', borderRadius: '4px', fontSize: '0.9rem', color: '#fff' }}>{playingModule.category}</span>
+                <h2 style={{ fontSize: '2rem', marginBottom: '10px' }}>{playingModule.title}</h2>
+                <p style={{ fontSize: '1.2rem', marginBottom: '10px' }}>{playingModule.description}</p>
+                <span style={{ background: '#333', padding: '4px 12px', borderRadius: '4px', fontSize: '0.9rem', color: '#fff' }}>{playingModule.category}</span>
                 </div>
             </div>
         </div>
-      )}
+    )}
     </div>
   );
 };

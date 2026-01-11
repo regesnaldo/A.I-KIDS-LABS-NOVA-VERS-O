@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from extensions import db, jwt, cors
 from auth_routes import auth_bp
 from routes.content import content_bp
+from routes.chat import chat_bp
+from routes.recommendations import recommendations_bp
 
 # Carrega variáveis de ambiente do arquivo .env
 load_dotenv()
@@ -34,8 +36,14 @@ def create_app():
     # Registra Blueprints
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(content_bp, url_prefix='/api')
+    app.register_blueprint(chat_bp, url_prefix='/api/chat')
+    app.register_blueprint(recommendations_bp, url_prefix='/api/recommendations')
 
     # Exemplo de rota protegida: teste a conexão ao DB via API
+    @app.route('/health', methods=['GET'])
+    def health_root():
+        return jsonify({"status": "ok"}), 200
+
     @app.route('/api/health', methods=['GET'])
     def health_check():
         try:

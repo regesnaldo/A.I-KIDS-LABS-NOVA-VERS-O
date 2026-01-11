@@ -27,8 +27,8 @@ const Login = ({ onLogin }: LoginProps) => {
         data = await authAPI.register({ name, email, password, age: 10 });
       }
 
-      if (data.success || data.token) {
-        localStorage.setItem('token', data.token);
+      if (data.success || data.token || data.access_token) {
+        localStorage.setItem('token', data.token || data.access_token);
         if (data.user) {
             localStorage.setItem('user', JSON.stringify(data.user));
         }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const HeroSection = () => {
   return (
     <div className="hero" style={{ 
@@ -45,30 +47,35 @@ const HeroSection = () => {
           Aprenda Inteligência Artificial e Programação se divertindo. Missões interativas para todas as idades.
         </p>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <button className="btn-play" style={{ 
-            fontSize: '1.2rem', 
-            padding: '12px 32px', 
-            borderRadius: '8px' 
-          }}>
-            ▶ COMEÇAR AGORA
-          </button>
-          <button style={{ 
-            padding: '12px 32px', 
-            fontSize: '1.2rem', 
-            fontWeight: 'bold', 
-            border: '2px solid rgba(255,255,255,0.3)', 
-            borderRadius: '8px', 
-            background: 'rgba(255,255,255,0.1)', 
-            color: 'white', 
-            cursor: 'pointer',
-            backdropFilter: 'blur(5px)',
-            transition: 'background 0.3s'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-          >
-            ℹ️ SAIBA MAIS
-          </button>
+          <Link to="/missoes" style={{ textDecoration: 'none' }}>
+            <button className="btn-play" style={{ 
+              fontSize: '1.2rem', 
+              padding: '12px 32px', 
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}>
+              ▶ COMEÇAR AGORA
+            </button>
+          </Link>
+          <Link to="/about" style={{ textDecoration: 'none' }}>
+            <button style={{ 
+              padding: '12px 32px', 
+              fontSize: '1.2rem', 
+              fontWeight: 'bold', 
+              border: '2px solid rgba(255,255,255,0.3)', 
+              borderRadius: '8px', 
+              background: 'rgba(255,255,255,0.1)', 
+              color: 'white', 
+              cursor: 'pointer',
+              backdropFilter: 'blur(5px)',
+              transition: 'background 0.3s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+            >
+              ℹ️ SAIBA MAIS
+            </button>
+          </Link>
         </div>
       </div>
     </div>

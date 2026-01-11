@@ -8,8 +8,12 @@ interface Message {
   timestamp: Date;
 }
 
-const ChatAssistant: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatAssistantProps {
+  isOpen: boolean;
+  onToggle: (isOpen: boolean) => void;
+}
+
+const ChatAssistant: React.FC<ChatAssistantProps> = ({ isOpen, onToggle }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -89,7 +93,7 @@ const ChatAssistant: React.FC = () => {
     <div className="chat-assistant-container">
       {/* Floating Button */}
       {!isOpen && (
-        <button className="chat-fab" onClick={() => setIsOpen(true)}>
+        <button className="chat-fab" onClick={() => onToggle(true)}>
           <span className="fab-icon">💬</span>
           <span className="fab-text">Ajuda I.A.</span>
         </button>
@@ -106,7 +110,7 @@ const ChatAssistant: React.FC = () => {
                 <span className="status-indicator">Online</span>
               </div>
             </div>
-            <button className="close-btn" onClick={() => setIsOpen(false)}>✖</button>
+            <button className="close-btn" onClick={() => onToggle(false)}>✖</button>
           </div>
 
           <div className="chat-messages">

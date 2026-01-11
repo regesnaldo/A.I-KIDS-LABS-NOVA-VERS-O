@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, User, Menu } from 'lucide-react';
 
-const Navbar = () => {
+interface NavbarProps {
+  onOpenChat?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -51,9 +55,25 @@ const Navbar = () => {
           
           <div className="desktop-menu" style={{ display: 'flex', gap: '20px' }}>
             <Link to="/" style={{ color: '#fff', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Início</Link>
-            <Link to="/series" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Missões</Link>
-            <Link to="/filmes" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Labs</Link>
-            <Link to="/minha-lista" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Conquistas</Link>
+            <Link to="/missoes" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Missões</Link>
+            <Link to="/labs" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Labs</Link>
+            <Link to="/conquistas" style={{ color: '#e5e5e5', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem' }}>Conquistas</Link>
+            <button 
+              onClick={onOpenChat} 
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: '#3b82f6', 
+                fontWeight: 'bold', 
+                cursor: 'pointer', 
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px'
+              }}
+            >
+              💬 Ajuda I.A.
+            </button>
           </div>
         </div>
 

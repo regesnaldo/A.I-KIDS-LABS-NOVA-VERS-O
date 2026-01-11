@@ -53,13 +53,33 @@ def get_home_content():
     return jsonify({"rows": rows}), 200
 
 @content_bp.route('/temporadas', methods=['GET'])
-def get_temporadas():
+@content_bp.route('/seasons', methods=['GET'])
+@jwt_required(optional=True)
+def get_seasons():
+    # Tente fetch do DB Neon; fallback mock se vazio
     temporadas = Temporada.query.order_by(Temporada.numero).all()
+    
+    if not temporadas:
+        # Fallback mock data
+        seasons_data = [{
+            'id': i, 
+            'titulo': f'Temporada {i}', 
+            'descricao': 'Missões lúdicas de IA para kids', 
+            'image': 'https://example.com/img.png', # Frontend compatibility
+            'imagem': 'https://example.com/img.png'
+        } for i in range(1, 51)]
+        return jsonify(seasons_data), 200
+
+    # Serialize DB objects
     return jsonify([{
         "id": t.id,
         "numero": t.numero,
+        "title": t.titulo,
         "titulo": t.titulo,
-        "descricao": t.descricao
+        "description": t.descricao,
+        "descricao": t.descricao,
+        "image": f"https://cdn.kidslabs.com/covers/t{t.numero}.jpg",
+        "imagem": f"https://cdn.kidslabs.com/covers/t{t.numero}.jpg"
     } for t in temporadas]), 200
 
 @content_bp.route('/temporadas', methods=['POST'])
